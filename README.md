@@ -3,6 +3,11 @@ PABD19
 
 A Symfony project created on February 26, 2019, 4:53 pm.
 DOGARU NARCIS
-=======
-Oancea Maria Nicoleta <br />
+### A Symfony project created on February 26, 2019, 4:53 pm.
+
+## Contributors
+
+Dogaru Narcis  
+Oancea Maria Nicoleta  
+Golban Igor
 Danet Mihai
