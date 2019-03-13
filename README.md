@@ -11,3 +11,4 @@ Golban Igor
 Danet Mihai  
 Iancu Mihai-Ovidiu  
 Preda Alexandru
+Radu Veronica
