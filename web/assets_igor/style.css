@@ -5,11 +5,15 @@
 
 body {
     font-family: 'Arial', 'sans-serif';
+    background-color: #dcefff;
 }
 
 .main {
     width: 80vw;
     margin: 15px auto;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
 }
 
 p, h1, ul {
