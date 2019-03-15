@@ -1,10 +1,13 @@
 PABD19
 ======
 
-### A Symfony project created on February 26, 2019, 4:53 pm.
+A Symfony project created on February 26, 2019, 4:53 pm.
 
-## Contributors
+Contributors
 
 Dogaru Narcis  
 Oancea Maria Nicoleta  
-Golban Igor
+Golban Igor  
+Danet Mihai  
+Iancu Mihai-Ovidiu  
+Preda Alexandru
