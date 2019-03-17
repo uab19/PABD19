@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome Mihai Danet{% endblock %}
+
+{% block body %}
+    <div class="personal_page_container">
+        <div class="profile_pic_container">
+            <img class="profile_pic" src="{{ absolute_url(asset('assets/images/DanetMihai.jpg')) }}" alt="">
+        </div>
+        <div class="content">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas esse deleniti nulla dolor enim assumenda
+                natus,
+                perferendis accusantium voluptatibus impedit culpa libero ipsam nemo maiores reiciendis adipisci totam.
+                Repellendus, eius.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, consequuntur quidem atque omnis rem placeat ea
+                dicta odit
+                praesentium quisquam dolore ducimus eveniet pariatur obcaecati corrupti nulla quaerat porro natus.
+            </p>
+            <ul>
+                <li>unu</li>
+                <li>doi</li>
+                <li>trei</li>
+                <li>patru</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
