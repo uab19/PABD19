@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/DanetMihai.css') }}">
+{% endblock %}
+
 {% block title %}Welcome Mihai Danet{% endblock %}
 
 {% block body %}
     <div class="personal_page_container">
         <div class="profile_pic_container">
-            <img class="profile_pic" src="{{ absolute_url(asset('assets/images/DanetMihai.jpg')) }}" alt="">
+            <img class="profile_pic" src="{{ asset('assets/images/DanetMihai.jpg') }}" alt="">
         </div>
         <div class="content">
             <p>
