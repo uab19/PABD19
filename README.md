@@ -10,5 +10,6 @@ Oancea Maria Nicoleta
 Golban Igor  
 Danet Mihai  
 Iancu Mihai-Ovidiu  
-Preda Alexandru
-Radu Veronica
+Preda Alexandru  
+Radu Veronica  
+Olariu Lucian
