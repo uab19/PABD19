@@ -13,3 +13,4 @@ Iancu Mihai-Ovidiu
 Preda Alexandru  
 Radu Veronica  
 Olariu Lucian
+Iga Sanda 
