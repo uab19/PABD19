@@ -12,5 +12,6 @@ Danet Mihai
 Iancu Mihai-Ovidiu  
 Preda Alexandru  
 Radu Veronica  
-Olariu Lucian
+Olariu Lucian 
 Iga Sanda 
+Sicoe Mihai Alexandru 
