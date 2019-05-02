@@ -17,7 +17,7 @@ class DefaultController extends Controller
     public function pagContactAction(Request $request)
     {
         $form = $this->createFormBuilder()
-            ->add('from', EmailType::class)
+            ->add('email', EmailType::class)
             ->add('message', TextareaType::class)
             ->add('send', SubmitType::class)
             ->getForm();   
@@ -30,13 +30,14 @@ class DefaultController extends Controller
             
             dump($data);
             
+            $content = "<strong>Email:</strong> " . $form->getData()['email'] . "<br>"
+                . "<strong>Message:</strong> " . $form->getData()['message'] . "<br>";
+            
             $message = \Swift_Message::newInstance()
-                ->setSubject('Formular trimis Test')
-                ->setFrom($data['from'])
-                ->setTo('bwqictwz@sharklasers.com')
-                ->setBody(
-                    $form->getData()['message'], 'text/plain'
-            );
+                ->setSubject('Mesaj contact nou')
+                ->setFrom($form->getData()['email'])
+                ->setTo($this->getParameter('mailer_to'))
+                ->setBody($content);
             
             $this->get('mailer')->send($message);
         }
