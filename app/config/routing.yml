@@ -8,6 +8,13 @@ igor:
         _controller: FrameworkBundle:Template:template
         template: igor/index.html.twig
 
+danet:
+    path: /DanetMihai
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:  Danet/DanetMihai.html.twig
+
+
 lucian-olariu:
     path: /lucian-olariu
     defaults:
