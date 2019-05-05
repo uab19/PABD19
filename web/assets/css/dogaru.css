@@ -8,18 +8,24 @@ body {
     width: 80%;
     margin:5%;
     padding: 5%;
+
+    display: flex;
 }
 
 #profile-pic {
-    width:20em;
+    width:20em; 
+    flex:1;
 }
 
 #profile-pic #image-container {
     position: relative;
     
     height:20em;
-    background-image: url("../../assets/images/dogaru.jpg");
-    background-size:cover;
+}
+
+#profile-pic #image-container img {
+    width:18em;
+    height: 20em;
 }
 
 #profile-pic #name {
@@ -28,4 +34,15 @@ body {
     font-weight: bold;
     text-align: center;
     margin-top:1%;
+}
+
+#content {
+    color:white;
+    word-break: break-all;
+    padding-left: 5%;
+    flex:4.5;
+}
+
+#list {
+    color:#76ff03;
 }
