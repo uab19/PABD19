@@ -13,3 +13,10 @@ danet:
     defaults:
         _controller: FrameworkBundle:Template:template
         template:  Danet/DanetMihai.html.twig
+
+oancea:
+    path: /oancea
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: oancea/index.html.twig
+        
