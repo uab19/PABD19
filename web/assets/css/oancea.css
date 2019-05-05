@@ -2,10 +2,16 @@ body{
 
     background-color: aquamarine;
 }
+
 #container{
     position: relative;
-    width: 100%;
+    width: 80%;
     height: auto;
-    margin: 1%;
-    margin-left: 2%;
+    margin: 2%;
+    margin-left: 10%;
+}
+
+#imagine{
+    float: left;
+    margin-right: 3%;
 }
