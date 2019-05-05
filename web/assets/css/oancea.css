@@ -1,0 +1,11 @@
+body{
+
+    background-color: aquamarine;
+}
+#container{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 1%;
+    margin-left: 2%;
+}
