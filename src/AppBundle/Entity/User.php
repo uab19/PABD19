@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Table(name="users")
@@ -33,11 +34,24 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(name="modified_at", type="datetime")
+     */
+    private $modifiedAt;
+
     public function __construct()
     {
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
+
+        $this->createdAt = new DateTime();
+        $this->modifiedAt = new DateTime();
     }
 
     public function getUsername()
@@ -66,6 +80,11 @@ class User implements UserInterface, \Serializable
     {
     }
 
+    public function setModifiedAt(\DateTime $dateTime)
+    {
+        $this->modifiedAt = $dateTime;
+    }
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
@@ -73,6 +92,8 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->email,
             $this->password,
+            $this->createdAt,
+            $this->modifiedAt,
             // see section on salt below
             // $this->salt,
         ]);
@@ -85,6 +106,8 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->email,
             $this->password,
+            $this->createdAt,
+            $this->modifiedAt
             // see section on salt below
             // $this->salt
             ) = unserialize($serialized, ['allowed_classes' => false]);

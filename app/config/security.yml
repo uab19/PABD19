@@ -31,3 +31,4 @@ security:
             form_login:
                 login_path: login
                 check_path: do-login
+            provider: pabd19_user_provider
