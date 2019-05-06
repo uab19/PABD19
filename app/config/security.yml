@@ -32,3 +32,5 @@ security:
                 login_path: login
                 check_path: do-login
             provider: pabd19_user_provider
+    access_control:
+        - { path: ^/dashboard, roles: ROLE_USER }
