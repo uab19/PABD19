@@ -14,14 +14,11 @@ danet:
         _controller: FrameworkBundle:Template:template
         template:  Danet/DanetMihai.html.twig
 
-<<<<<<< HEAD
 dogaru:
     path: /dogaru
     defaults:
         _controller: FrameworkBundle:Template:template
         template: dogaru/index.html.twig
-=======
->>>>>>> 7f7c695892d288ab9845e1eebdb94eb44bc87df7
 
 lucian-olariu:
     path: /lucian-olariu
