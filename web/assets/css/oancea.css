@@ -1,0 +1,17 @@
+body{
+
+    background-color: aquamarine;
+}
+
+#container{
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin: 2%;
+    margin-left: 10%;
+}
+
+#imagine{
+    float: left;
+    margin-right: 3%;
+}
