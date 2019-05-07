@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Personal Page Lucian Olariu
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets_lucian_olariu/css/style.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="main">
+        <section id="intro" class="section">
+            <div class="container d-flex">
+                <div class="profile-pic-container">
+                    <img id="profile-pic" src="{{ asset('assets_lucian_olariu/images/prof_pic.jpg') }}" />
+                </div>
+                <div class="bio-container">
+                    <h1 id="name">Lucian Olariu</h1>
+                    <h2 id="profession">Software Engineer</h2>
+                    <p>Passionate software engineer with over 5 years of experience working on large scale applications.</p>
+                    <p>Creating software has always been a passion of mine ever since I was a little kid. From the moment I wrote the first lines of code, I was hooked. I could not belive you can tell a computer to do things. Growing up I started to dig deeper and deeper into the world of computer science setting myself up for a career as a software engineer.</p>
+
+                </div>
+            </div>
+        </section>
+        <section id="intro" class="section">
+            <div class="container d-flex">
+                <div class="ul-container">
+                    <h1 class="bio-ul-title">Hobbies</h1>
+                    <ul class="bio-ul">
+                        <li>Guitar</li>
+                        <li>Video games</li>
+                        <li>Astronomy</li>
+                    </ul>
+                </div>
+                <div class="ul-container">
+                    <h1 class="bio-ul-title">Programming Languages</h1>
+                    <ul class="bio-ul">
+                        <li>PHP</li>
+                        <li>Python</li>
+                        <li>Javascript</li>
+                    </ul>
+                </div>
+                <div class="ul-container">
+                    <h1 class="bio-ul-title">DevOps Tools</h1>
+                    <ul class="bio-ul">
+                        <li>Linux based systems</li>
+                        <li>Docker</li>
+                        <li>Vagrant</li>
+                        <li>Nginx</li>
+                        <li>Apache</li>
+                        <li>Jenkins</li>
+                    </ul>
+                </div>
+                <div class="ul-container">
+                    <h1 class="bio-ul-title">Infrastructure</h1>
+                    <ul class="bio-ul">
+                        <li>Bare metal machines</li>
+                        <li>AWS</li>
+                        <li>GCE</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
