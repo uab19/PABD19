@@ -31,3 +31,9 @@ lucian-olariu:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: lucian-olariu/index.html.twig
+
+iancu-mihai:
+    path: /iancu-mihai
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: iancu-mihai/index.html.twig
