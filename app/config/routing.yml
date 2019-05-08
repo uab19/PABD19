@@ -7,9 +7,27 @@ igor:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: igor/index.html.twig
-        
+
 danet:
     path: /DanetMihai
     defaults:
         _controller: FrameworkBundle:Template:template
         template:  Danet/DanetMihai.html.twig
+
+oancea:
+    path: /oancea
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: oancea/index.html.twig
+        
+dogaru:
+    path: /dogaru
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: dogaru/index.html.twig
+
+lucian-olariu:
+    path: /lucian-olariu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: lucian-olariu/index.html.twig
