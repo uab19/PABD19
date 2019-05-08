@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Welcome to GALLERY</title>
+
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/lightbox/css/lightbox.min.css') }}" />
+
+    <style>
+        body {
+            background-color: #E7EFF5;
+        }
+        .upload-form-wrapper.hidden .btn-upload-form--show{
+            display: inline-block;
+        }
+        .upload-form-wrapper .btn-upload-form--show,
+        .upload-form-wrapper.hidden .upload-form,
+        .upload-form-wrapper.hidden .btn-upload-form--hide{
+            display: none;
+        }
+
+        .gallery-image-block {
+
+        }
+        .gallery-image-block img {
+            width: 100%;
+        }
+    </style>
+
+</head>
+<body>
+
+{% block body %}{% endblock %}
+
+<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor/lightbox/js/lightbox.min.js') }}"></script>
+
+<script>
+    $('.upload-form-wrapper .btn-upload-form--show').click(function() {
+        $('.upload-form-wrapper').removeClass('hidden');
+    });
+    $('.upload-form-wrapper .btn-upload-form--hide').click(function() {
+        $('.upload-form-wrapper').addClass('hidden');
+    });
+</script>
+
+</body>
+</html>
