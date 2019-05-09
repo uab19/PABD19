@@ -31,3 +31,9 @@ lucian-olariu:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: lucian-olariu/index.html.twig
+
+marius-rusu:
+    path: /marius-rusu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: Marius/index.html.twig
