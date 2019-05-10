@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * ForumReplies
@@ -65,6 +67,23 @@ class ForumReplies
      */
     private $user;
 
+    /**
+     * @var \ForumReplies
+     * 
+     * @ORM\OneToMany(targetEntity="ForumReplies", mappedBy="reply")
+     */
+    private $replies;
+
+    private function __construct() {
+        $this->replies = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|ForumReplies[]
+     */
+    public function getReplies(): Collection {
+        return $this->replies;
+    }
 
 
     /**

@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * ForumTopics
@@ -31,9 +33,9 @@ class ForumTopics
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="content", type="text", length=65535, nullable=false)
      */
-    private $text;
+    private $content;
 
     /**
      * @var \DateTime
@@ -62,6 +64,33 @@ class ForumTopics
      */
     private $user;
 
+    /**
+     * @var integer
+     */
+    private $repliesNumber;
+
+    /**
+     * @var string
+     */
+    private $authorName;
+
+    /**
+     * @var \ForumTopics
+     * 
+     * @ORM\OneToMany(targetEntity="ForumReplies", mappedBy="topic")
+     */
+    private $replies;
+
+    private function __construct() {
+        $this->replies = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|ForumReplies[]
+     */
+    public function getReplies(): Collection {
+        return $this->replies;
+    }
 
 
     /**
@@ -99,27 +128,27 @@ class ForumTopics
     }
 
     /**
-     * Set text
+     * Set content
      *
-     * @param string $text
+     * @param string $content
      *
      * @return ForumTopics
      */
-    public function setText($text)
+    public function setContent($content)
     {
-        $this->text = $text;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get text
+     * Get content
      *
      * @return string
      */
-    public function getText()
+    public function getContent()
     {
-        return $this->text;
+        return $this->content;
     }
 
     /**
@@ -192,5 +221,52 @@ class ForumTopics
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set repliesNumber
+     *
+     * @param integer $repliesNumber
+     *
+     * @return ForumTopics
+     */
+    public function setRepliesNumber($repliesNumber)
+    {
+        $this->repliesNumber = $repliesNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get repliesNumber
+     *
+     * @return integer
+     */
+    public function getRepliesNumber()
+    {
+        return $this->repliesNumber;
+    }
+
+    /**
+     * Set authorName
+     * 
+     * @param string $authorName
+     * 
+     * @return ForumTopics
+     */
+    public function setAuthorName($authorName) 
+    {
+        $this->authorName = $authorName;
+
+        return $this;
+    }
+
+    /**
+     * Get authorName
+     * 
+     * @return string
+     */
+    public function getAuthorName() {
+        return $this->authorName;
     }
 }
