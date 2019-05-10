@@ -14,9 +14,26 @@ danet:
         _controller: FrameworkBundle:Template:template
         template:  Danet/DanetMihai.html.twig
 
+oancea:
+    path: /oancea
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: oancea/index.html.twig
+        
+dogaru:
+    path: /dogaru
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: dogaru/index.html.twig
 
 lucian-olariu:
     path: /lucian-olariu
     defaults:
         _controller: FrameworkBundle:Template:template
         template: lucian-olariu/index.html.twig
+
+marius-rusu:
+    path: /marius-rusu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: Marius/index.html.twig
