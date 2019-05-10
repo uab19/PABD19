@@ -1,0 +1,70 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ForumReplies
+ *
+ * @ORM\Table(name="forum_replies", indexes={@ORM\Index(name="forum_replies_forum_replies_id_fk", columns={"reply_id"}), @ORM\Index(name="forum_replies_forum_topics_id_fk", columns={"topic_id"}), @ORM\Index(name="forum_replies_users_id_fk", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class ForumReplies
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", length=65535, nullable=false)
+     */
+    private $content;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_added", type="datetime", nullable=false)
+     */
+    private $dateAdded;
+
+    /**
+     * @var \ForumReplies
+     *
+     * @ORM\ManyToOne(targetEntity="ForumReplies")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="reply_id", referencedColumnName="id")
+     * })
+     */
+    private $reply;
+
+    /**
+     * @var \ForumTopics
+     *
+     * @ORM\ManyToOne(targetEntity="ForumTopics")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="topic_id", referencedColumnName="id")
+     * })
+     */
+    private $topic;
+
+    /**
+     * @var \Users
+     *
+     * @ORM\ManyToOne(targetEntity="Users")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}
+

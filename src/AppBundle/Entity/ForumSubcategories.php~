@@ -1,0 +1,50 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ForumSubcategories
+ *
+ * @ORM\Table(name="forum_subcategories", indexes={@ORM\Index(name="forum_subcategories_forum_categories_id_fk", columns={"category_id"})})
+ * @ORM\Entity
+ */
+class ForumSubcategories
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=1000, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var \ForumCategories
+     *
+     * @ORM\ManyToOne(targetEntity="ForumCategories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
+
+
+}
+

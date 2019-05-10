@@ -1,106 +1,47 @@
 {% extends 'forum/index.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/forum/design.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/forum/home.css') }}">
 {% endblock %}
 
 {% block body %}
 
 <h2 class="page-header">Bine ai veni pe forum</h2>
 
-<div class="d-category">
-    <strong>GENERAL</strong>
+{% for category in categories %}
+
+<div class="category">
+    <strong>{{ category.getName }}</strong>
 </div>
 
 <br>
 
 <table class="table table-bordered">
-
     <tbody>
-        <tr>
-            <td><div class="d-forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-            <td><div class="d-subcategory">
-                <table>
-                    <tr><td><strong>FAQ</strong></td></tr>
-                    <tr><td>Description ....</td></tr>
-                </table>
-            </div></td>
-            <td>x topics</td>
-            <td>x replies</td>
-        </tr>
 
-        <tr>
-            <td><div class="d-forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-            <td><div class="d-subcategory">
-                <table>
-                    <tr><td><strong>Subtegory 2</strong></td></tr>
-                    <tr><td>Description ....</td></tr>
-                </table>
-            </div></td>
-            <td>x topics</td>
-            <td>x replies</td>
-        </tr>
-
-        <tr>
-            <td><div class="d-forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-            <td><div class="d-lvtwo-category">
-                <table>
-                    <tr><td><strong>Subtegory 3</strong></td></tr>
-                    <tr><td>Description ....</td></tr>
-                </table>
-            </div></td>
-            <td>x topics</td>
-            <td>x replies</td>
-        </tr>
+        {% for subcategory in category.getSubcategories %}
+            <tr>
+                <td class="col-xs-1 col-md-1"><div class="forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
+                <td>
+                    <div class="subcategory">
+                        <table>
+                            <tr><td><a href="/forum/topics/{{ subcategory.getId }}"><strong>{{ subcategory.getName }}</strong></a></td></tr>
+                            <tr><td>{{ subcategory.getDescription }}</td></tr>
+                        </table>
+                    </div>
+                </td>     
+                <td class="col-xs-3 col-md-3">
+                    <table>
+                        <tr><td>{{ subcategory.getTopicsNumber }} topice</strong></td></tr>
+                        <tr><td>x raspunsuri</td></tr>
+                    </table>
+                </td>
+            </tr>
+        {% endfor %}
     </tbody>
 </table>
 
-<div class="d-category">
-        <strong>CATEGORY 2</strong>
-    </div>
-    
-<br>
-
-<table class="table table-bordered">
-
-        <tbody>
-            <tr>
-                <td><div class="d-forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-                <td><div class="d-subcategory">
-                    <table>
-                        <tr><td><strong>Subcategory 1</strong></td></tr>
-                        <tr><td>Description ....</td></tr>
-                    </table>
-                </div></td>
-                <td>x topics</td>
-                <td>x replies</td>
-            </tr>
-    
-            <tr>
-                <td><div class="d-forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-                <td><div class="d-subcategory">
-                    <table>
-                        <tr><td><strong>Subtegory 2</strong></td></tr>
-                        <tr><td>Description ....</td></tr>
-                    </table>
-                </div></td>
-                <td>x topics</td>
-                <td>x replies</td>
-            </tr>
-    
-            <tr>
-                <td><div class="d-forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-                <td><div class="d-lvtwo-category">
-                    <table>
-                        <tr><td><strong>Subtegory 3</strong></td></tr>
-                        <tr><td>Description ....</td></tr>
-                    </table>
-                </div></td>
-                <td>x topics</td>
-                <td>x replies</td>
-            </tr>
-        </tbody>
-    </table>
+{% endfor %}
 
 {% endblock %}
 
