@@ -1,0 +1,48 @@
+body {
+    background: #212121;
+}
+
+#container {
+    background: #424242 ;
+    position:relative;
+    width: 80%;
+    margin:5%;
+    padding: 5%;
+
+    display: flex;
+}
+
+#profile-pic {
+    width:20em; 
+    flex:1;
+}
+
+#profile-pic #image-container {
+    position: relative;
+    
+    height:20em;
+}
+
+#profile-pic #image-container img {
+    width:18em;
+    height: 20em;
+}
+
+#profile-pic #name {
+    color:#eeeeee;
+    font-size:2em;
+    font-weight: bold;
+    text-align: center;
+    margin-top:1%;
+}
+
+#content {
+    color:white;
+    word-break: break-all;
+    padding-left: 5%;
+    flex:4.5;
+}
+
+#list {
+    color:#76ff03;
+}
