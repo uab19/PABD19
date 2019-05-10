@@ -37,3 +37,9 @@ marius-rusu:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: Marius/index.html.twig
+
+ligia-tatucu:
+    path: /ligia-tatucu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: ligia/index.html.twig
