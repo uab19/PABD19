@@ -6,30 +6,37 @@
 
 {% block body %}
 
-<h2 class="page-header">{{ subcategory.getName }}</h2>
+<div class="container">
 
-<table class="table table-bordered">
-    <tbody>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-header"><div class="title">{{ subcategory.getName }}</div></h2>
 
-        {% for topic in topics %}
-            <tr>
-                <td class="col-xs-1 col-md-1"><div class="forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-                <td>
-                    <div class="subcategory">
-                        <table>
-                            <tr><td><a href="/forum/topics/topic/view/{{ topic.getId }}"><strong>{{ topic.getTitle }}</strong></a></td></tr>
-                            <tr><td><i>Created by {{ topic.getAuthorName }}</i></td></tr>
-                        </table>
-                    </div>
-                </td>     
-                <td class="col-xs-2 col-md-2">
-                    <table>
-                        <tr><td>{{ topic.getRepliesNumber }} raspunsuri</strong></td></tr>
-                    </table>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            <table class="table table-bordered">
+                <tbody>
+            
+                    {% for topic in topics %}
+                        <tr>
+                            <td class="col-xs-1 col-md-1"><div class="forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
+                            <td>
+                                <div class="subcategory">
+                                    <table>
+                                        <tr><td><a href="/forum/topics/topic/view/{{ topic.getId }}"><strong>{{ topic.getTitle }}</strong></a></td></tr>
+                                        <tr><td><i>Created by {{ topic.getAuthorName }}</i></td></tr>
+                                    </table>
+                                </div>
+                            </td>     
+                            <td class="col-xs-2 col-md-2">
+                                <table>
+                                    <tr><td>{{ topic.getRepliesNumber }} raspunsuri</strong></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>  
+        </div>
+    </div>
+</div>
 
 {% endblock %}

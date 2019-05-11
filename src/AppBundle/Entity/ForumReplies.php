@@ -26,9 +26,9 @@ class ForumReplies
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="message", type="text", length=65535, nullable=false)
      */
-    private $content;
+    private $message;
 
     /**
      * @var \DateTime
@@ -68,13 +68,18 @@ class ForumReplies
     private $user;
 
     /**
+     * @var string
+     */
+    private $authorName;
+
+    /**
      * @var \ForumReplies
      * 
      * @ORM\OneToMany(targetEntity="ForumReplies", mappedBy="reply")
      */
     private $replies;
 
-    private function __construct() {
+    public function __construct() {
         $this->replies = new ArrayCollection();
     }
 
@@ -97,27 +102,27 @@ class ForumReplies
     }
 
     /**
-     * Set content
+     * Set message
      *
-     * @param string $content
+     * @param string $message
      *
      * @return ForumReplies
      */
-    public function setContent($content)
+    public function setMessage($message)
     {
-        $this->content = $content;
+        $this->message = $message;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get message
      *
      * @return string
      */
-    public function getContent()
+    public function getMessage()
     {
-        return $this->content;
+        return $this->message;
     }
 
     /**
@@ -214,5 +219,28 @@ class ForumReplies
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set authorName
+     * 
+     * @param string $authorName
+     * 
+     * @return ForumReplies
+     */
+    public function setAuthorName($authorName) 
+    {
+        $this->authorName = $authorName;
+
+        return $this;
+    }
+
+    /**
+     * Get authorName
+     * 
+     * @return string
+     */
+    public function getAuthorName() {
+        return $this->authorName;
     }
 }

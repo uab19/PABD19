@@ -1,59 +1,66 @@
+@import "colors.css";
+
 .navigation-bar {
-    background-color:#6a1b9a;
+    background-color: var(--primary-color);
 }
 
 .navigation-bar .navbar-brand {
-    color:white;
+    color: var(--writing-primary-color);
     cursor: default;
 }
 
 .navigation-bar .navbar-brand:hover {
-    color:white;
+    color: var(--writing-primary-color);
     cursor: default;
 }
 
 .navigation-bar .forum-menu li a {
-    color:white;
+    color: var(--writing-primary-color);
 }
 
 .navigation-bar .forum-menu li a:hover {
-    color:white;
-    background-color:#4a148c;
+    color: var(--writing-primary-color);
+    background-color: var(--secondary-color);
 }
 
 
 .navigation-bar .dropdown .dropdown-toggle {
-    color:white;
+    color: var(--writing-primary-color);
 }
 
 .navigation-bar .dropdown .dropdown-toggle:hover {
-    color:white;
+    color: var(--writing-primary-color);
 }
 
 .forum-symbol {
-    color: #6a1b9a;
+    color: var(--primary-color);
     text-align: center;
     font-size:20px;
 }
 
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
-    color:white;
-    background-color: #4a148c;
+    color: var(--writing-primary-color);
+    background-color: var(--secondary-color);
 }
 
 .category {
     font-size:20px;
-    background-color: #6a1b9a;
-    color:white;
+    background-color: var(--primary-color);
+    color: var(--writing-primary-color);
     padding: 5px;
 }
 
 .subcategory a {
     text-decoration: none;
-    color:#6a1b9a;
+    color: var(--primary-color);
 }
 
 .subcategory a:hover {
-    color:#4a148c;
+    color:var(--secondary-color);
+}
+
+.title {
+    font-weight: bold;
+    color: var(--primary-color);
 }

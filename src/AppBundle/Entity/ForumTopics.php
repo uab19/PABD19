@@ -33,9 +33,9 @@ class ForumTopics
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="message", type="text", length=65535, nullable=false)
      */
-    private $content;
+    private $message;
 
     /**
      * @var \DateTime
@@ -128,27 +128,27 @@ class ForumTopics
     }
 
     /**
-     * Set content
+     * Set message
      *
-     * @param string $content
+     * @param string $message
      *
      * @return ForumTopics
      */
-    public function setContent($content)
+    public function setMessage($message)
     {
-        $this->content = $content;
+        $this->message = $message;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get message
      *
      * @return string
      */
-    public function getContent()
+    public function getMessage()
     {
-        return $this->content;
+        return $this->message;
     }
 
     /**

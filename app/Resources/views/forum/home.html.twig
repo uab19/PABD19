@@ -6,42 +6,49 @@
 
 {% block body %}
 
-<h2 class="page-header">Bine ai veni pe forum</h2>
+<div class="container">
 
-{% for category in categories %}
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-header"><div class="title">Bine ai venit pe forum</div></h2>
 
-<div class="category">
-    <strong>{{ category.getName }}</strong>
+            {% for category in categories %}
+            
+            <div class="category">
+                <strong>{{ category.getName }}</strong>
+            </div>
+            
+            <br>
+            
+            <table class="table table-bordered">
+                <tbody>
+            
+                    {% for subcategory in category.getSubcategories %}
+                        <tr>
+                            <td class="col-xs-1 col-md-1"><div class="forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
+                            <td>
+                                <div class="subcategory">
+                                    <table>
+                                        <tr><td><a href="/forum/topics/{{ subcategory.getId }}"><strong>{{ subcategory.getName }}</strong></a></td></tr>
+                                        <tr><td>{{ subcategory.getDescription }}</td></tr>
+                                    </table>
+                                </div>
+                            </td>     
+                            <td class="col-xs-3 col-md-3">
+                                <table>
+                                    <tr><td>{{ subcategory.getTopicsNumber }} topice</strong></td></tr>
+                                    <tr><td>x raspunsuri</td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>  
+
+            {% endfor %} 
+        </div>
+    </div>
 </div>
-
-<br>
-
-<table class="table table-bordered">
-    <tbody>
-
-        {% for subcategory in category.getSubcategories %}
-            <tr>
-                <td class="col-xs-1 col-md-1"><div class="forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
-                <td>
-                    <div class="subcategory">
-                        <table>
-                            <tr><td><a href="/forum/topics/{{ subcategory.getId }}"><strong>{{ subcategory.getName }}</strong></a></td></tr>
-                            <tr><td>{{ subcategory.getDescription }}</td></tr>
-                        </table>
-                    </div>
-                </td>     
-                <td class="col-xs-3 col-md-3">
-                    <table>
-                        <tr><td>{{ subcategory.getTopicsNumber }} topice</strong></td></tr>
-                        <tr><td>x raspunsuri</td></tr>
-                    </table>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-{% endfor %}
 
 {% endblock %}
 
