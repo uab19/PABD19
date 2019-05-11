@@ -31,3 +31,9 @@ lucian-olariu:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: lucian-olariu/index.html.twig
+        
+alex-preda:
+    path: /alex-preda
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: Alex/index.html.twig

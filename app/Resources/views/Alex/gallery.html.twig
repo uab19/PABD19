@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets_preda_alex/css/photostyle.css') }}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+{% endblock %}
+
+{% block title %}Photo Gallery{% endblock %}
+
+{% block body %}
+     <div class="container">
+         <h1>Photo Gallery</h1>
+         <br><br>
+         
+</div>
+
+ <div class="row">
+        {% for image in images %}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="/assets_preda_alex/image/{{ image }}" alt="some text here">
+            <div class="caption">
+                    <h3>Summer Image</h3>
+                    <p>Lorem Ipsum dolores bla bla bla</p>
+                    <p><a href="{{path('view_photo') }}" class="btn btn-primary" role="button">Visualize</a> 
+                        <a href="#" class="btn btn-default" role="button">Button</a></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+ <div class="navigation text-center">
+        {{ knp_pagination_render(images) }}
+    </div>
+
+{% endblock %}

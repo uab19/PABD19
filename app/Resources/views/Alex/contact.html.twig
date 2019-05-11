@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('assets/css/alexstyle.css') }}" />
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ asset('assets_preda_alex/css/alexstyle.css') }}" />
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 {% endblock %}
 
 {% block title %}Contact Form{% endblock %}
@@ -10,8 +10,16 @@
 {% block body %}
      <div class="container">
          <h1>Formular de Contact</h1>
-         <br><br>
-         
+         <br>
+         {% for msg in app.session.flashBag.get('success') %}
+             <div class="alert alert-success" role="alert">
+                 {{ msg }}
+             </div>
+         {% endfor %}
+         <br>
+
          {{ form(my_form) }}
-</div>
+
+
+     </div>
 {% endblock %}
