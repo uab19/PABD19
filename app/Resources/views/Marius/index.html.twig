@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets_marius/css/style.css') }}" />
+{% endblock %}
+
+{% block title %}Welcome Marius{% endblock %}
+
+{% block body %}
+    <div class="pag_pers">
+        <div class="img_profil">
+           <img class="profil" src="{{ asset('assets_marius/images/marius.jpg') }}" alt="" /> 
+        </div>
+        <div class="paragraphs">
+            <p>
+                Destinul individual ca o realitate interioară, iraţională şi imanentă nu se revelează decât în durere, că este singurul drum pozitiv de înţelegere lăuntrică a problemelor personale.
+            </p>
+            <p>
+                Câteodată oamenii se împiedică de adevăr, dar de cele mai multe ori se ridică și merg mai departe.
+            </p>
+          <ul>
+                <li>Informatica</li>
+                <li>Eelectronica Aplicata</li>
+                <li>Masuratori</li>
+                <li>Ingineria mediului</li>
+            </ul>
+        </div>
+          
+        </div>
+
+{% endblock %}
