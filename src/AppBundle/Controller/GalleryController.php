@@ -7,13 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class GalleryController extends Controller
 {
     /**
      * @Route("/gallery/", name="app_gallery_index")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function indexAction()
     {
@@ -32,14 +33,25 @@ class GalleryController extends Controller
     }
 
     /**
-     * @Route("/gallery/upload/", name="app_gallery_upload")
+     * @Route("/gallery/upload/", name="app_gallery_upload", requirements={"_method"="POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function uploadAction(Request $request)
+    public function uploadAction(ValidatorInterface $validator, Request $request)
     {
         $gallery = new Gallery();
         $upload_form = $this->getUploadForm($gallery);
 
         $upload_form->handleRequest($request);
+
+        $violation_list = $validator->validate($gallery);
+
+        if (count($violation_list) > 0) {
+            foreach ($violation_list as $violation) {
+                $this->addFlash('errors', $violation->getMessage());
+            }
+        }
 
         if ($upload_form->isSubmitted() && $upload_form->isValid()) {
             $web_path = $this->getParameter('kernel.project_dir') . DIRECTORY_SEPARATOR . 'web';
@@ -56,12 +68,49 @@ class GalleryController extends Controller
 
             $em->persist($gallery);
             $em->flush();
+
+            $this->addFlash('success', 'Image uploaded successfully');
+        }
+
+        return $this->redirect($this->generateUrl('app_gallery_index'));
+    }
+
+
+    /**
+     * @Route("/gallery/delete/{id}", name="app_gallery_delete")
+     *
+     * @return Response
+     */
+    public function deleteAction($id)
+    {
+        $gallery = $this->getDoctrine()
+            ->getRepository(Gallery::class)
+            ->find($id);
+
+        if (!is_null($gallery)) {
+            $web_path = $this->getParameter('kernel.project_dir') . DIRECTORY_SEPARATOR . 'web';
+            $file_path = $gallery->getFile();
+
+            $full_filepath = $web_path.DIRECTORY_SEPARATOR.$file_path;
+
+            if (file_exists($full_filepath)) {
+                unlink($full_filepath);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($gallery);
+            $em->flush();
+
+            $this->addFlash('success', 'Image deleted successfully');
         }
 
         return $this->redirect($this->generateUrl('app_gallery_index'));
     }
 
     /**
+     * @return \Symfony\Component\Form\FormInterface
+     *
+     * @param Gallery $gallery
      * @return \Symfony\Component\Form\FormInterface
      */
     private function getUploadForm(Gallery $gallery)

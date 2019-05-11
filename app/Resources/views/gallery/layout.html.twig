@@ -22,10 +22,37 @@
         }
 
         .gallery-image-block {
-
+            position: relative;
         }
-        .gallery-image-block img {
+        .gallery-image-block .btn-delete {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+        }
+        .gallery-image-block:hover .btn-delete {
+            display: inline-block;
+            -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+        }
+        .gallery-image-block a {
+            text-decoration: none;
+        }
+        .gallery-image-block a img {
             width: 100%;
+        }
+        .gallery-image-block a:hover img{
+            border-radius: 4px;
+            overflow: hidden;
+            -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+        }
+        .gallery-image-block a p {
+            color: #212529;
+            padding: 5px;
+            margin: 0;
         }
     </style>
 
@@ -44,6 +71,14 @@
     });
     $('.upload-form-wrapper .btn-upload-form--hide').click(function() {
         $('.upload-form-wrapper').addClass('hidden');
+    });
+    $('.gallery-image-block .btn-delete').click(function() {
+        if (confirm('Do you really want to delete this image?')) {
+            var url_template = "{{ url('app_gallery_delete', {'id': 'ID'}) }}";
+            var id = $(this).attr('data-id');
+
+            window.location.href = url_template.replace('ID', id);
+        }
     });
 </script>
 
