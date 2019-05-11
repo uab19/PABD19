@@ -36,7 +36,19 @@ class ForumController extends Controller {
 
                 $topicsNumber = $query->getSingleScalarResult();
 
+                $queryReplies = $entityManager->createQuery(
+                    'SELECT COUNT(forumReplies.id) 
+                    FROM AppBundle:ForumReplies forumReplies
+                    WHERE forumReplies.topic in 
+                        (SELECT forumTopics.id from AppBundle:ForumTopics forumTopics WHERE forumTopics.subcategory = :subcategory_id) or
+                        forumReplies.reply in (select forumReplies2.id from AppBundle:ForumReplies forumReplies2 where forumReplies2.topic in 
+                            (SELECT forumTopics2.id from AppBundle:ForumTopics forumTopics2 WHERE forumTopics2.subcategory = :subcategory_id))'
+                )->setParameter('subcategory_id', $subcategory_id);
+
+                $repliesNumber = $queryReplies->getSingleScalarResult();
+
                 $subcategory->setTopicsNumber($topicsNumber);
+                $subcategory->setRepliesNumber($repliesNumber);
             }
         }
 

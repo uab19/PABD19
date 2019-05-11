@@ -50,6 +50,11 @@ class ForumSubcategories
      */
     private $topicsNumber;
 
+    /**
+     * @var integer
+     */
+    private $repliesNumber;
+
 
     /**
      * Get id
@@ -157,5 +162,29 @@ class ForumSubcategories
     public function getTopicsNumber()
     {
         return $this->topicsNumber;
+    }
+
+    /**
+     * Set repliesNumber
+     *
+     * @param integer $repliesNumber
+     *
+     * @return ForumSubcategories
+     */
+    public function setRepliesNumber($repliesNumber)
+    {
+        $this->repliesNumber = $repliesNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get repliesNumber
+     *
+     * @return integer
+     */
+    public function getRepliesNumber()
+    {
+        return $this->repliesNumber;
     }
 }

@@ -75,13 +75,18 @@ class ForumTopics
     private $authorName;
 
     /**
+     * @var string
+     */
+    private $subcategoryName;
+
+    /**
      * @var \ForumTopics
      * 
      * @ORM\OneToMany(targetEntity="ForumReplies", mappedBy="topic")
      */
     private $replies;
 
-    private function __construct() {
+    public function __construct() {
         $this->replies = new ArrayCollection();
     }
 
@@ -268,5 +273,27 @@ class ForumTopics
      */
     public function getAuthorName() {
         return $this->authorName;
+    }
+
+    /**
+     * Set subcategoryName
+     * 
+     * @param string $subcategoryName
+     * 
+     * @return ForumTopics
+     */
+    public function setSubcategoryName($subcategoryName) {
+        $this->subcategoryName = $subcategoryName;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategoryName
+     * 
+     * @return string
+     */
+    public function getSubcategoryName() {
+        return $this->subcategoryName;
     }
 }

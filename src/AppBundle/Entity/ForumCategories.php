@@ -38,7 +38,7 @@ class ForumCategories
     private $subcategories;
 
 
-    private function __construct() {
+    public function __construct() {
         $this->subcategories = new ArrayCollection();
     }
 
