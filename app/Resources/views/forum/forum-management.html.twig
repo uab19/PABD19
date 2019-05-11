@@ -1,0 +1,75 @@
+{% extends 'forum/index.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/forum/home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-header">Panoul de administrare a forumului</h2>
+
+            {% for flash_message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success"> {{ flash_message }} </div>
+            {% endfor %}
+
+            {% for flash_message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"> {{ flash_message }} </div>
+            {% endfor %}
+
+            <a href="/forum/management/category/new/" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Adauga categorie noua</a>
+
+            <br><br>
+
+            <ul class="list-group">
+
+                {% for category in categories %}
+
+                    <li class="list-group-item">
+                        <strong>{{ category.getName }}</strong>
+
+                        <a href="/forum/management/category/{{ category.getId }}/subcategory/new/" class="btn btn-primary"
+                            data-placement="top" title="Adauga subcategorie noua">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+
+                        <a href="/forum/management/category/edit/{{ category.getId }}" class="btn btn-info"
+                            data-placement="top" title="Editeaza">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+
+                        <a href="/forum/management/category/delete/{{ category.getId }}" class="btn btn-danger"
+                            data-placement="top" title="Sterge">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </li>
+
+                    <li class="list-group-item">
+                        <ul class="list-group">
+                            {% for subcategory in category.getSubcategories %}
+
+                                <li class="list-group-item">
+                                    {{ subcategory.getName }}
+
+                                    <a href="/forum/management/category/subcategory/edit/{{ subcategory.getId }}" class="btn btn-info"
+                                        data-placement="top" title="Editeaza">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+            
+                                    <a href="/forum/management/category/subcategory/delete/{{ subcategory.getId }}" class="btn btn-danger"
+                                        data-placement="top" title="Sterge">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </li>
+
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
