@@ -42,3 +42,10 @@ marius-rusu:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: Marius/index.html.twig
+
+radu-goada:
+    path: /radu-goada
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: radu-goada/index.html.twig
+
