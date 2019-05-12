@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets_mihai_iancu/css/style.css') }}" />
+{% endblock %}
+
+{% block title %}Iancu Mihai-Ovidiu{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="profile-image-container">
+           <img class="profile-image" src="{{ asset('assets_mihai_iancu/images/iancu_mihai.jpg') }}" alt="Iancu Mihai" /> 
+        </div>
+        <div class="description-container">
+            <h2>Iancu Mihai-Ovidiu</h2>
+            <p class="subtitle">Web developer</p>
+            <p class="bio">
+                Hi, I’m Mihai and I’m 24 years old. I have always been a wizz kid in anything regarding IT zone. 
+                I have been really attracted to it and thus it’s both my hobby and my job! I find fun and pleasure in working and spending time working on it.
+                With over 2 years of professional experience on front-end and back-end tehnology. 
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="skills-container">
+                <ul>
+                    <p class="skill-title">Personal skills</p>
+                    <li>Communication</li>
+                    <li>Teamwork</li>
+                    <li>Approachability and Helpfulness</li>
+                    <li>Patience</li>
+                    <li>Open-mindedness</li>
+                    <li>Problem solving</li>
+                </ul>
+                <ul>
+                    <p class="skill-title">Programming languages</p>
+                    <li>C#</li>
+                    <li>PHP</li>
+                    <li>Java</li>
+                    <li>Javasript</li>
+                </ul>
+                <ul>
+                    <p class="skill-title">Key skills and competencies</p>
+                    <li>.Net</li>
+                    <li>Laravel</li>
+                    <li>ReactJS</li>
+                    <li>SQL Server</li>
+                    <li>MySql</li>
+                    <li>HTML</li>
+                    <li>Css</li>
+                </ul>
+            </div>
+        </div>
+          
+        </div>
+
+{% endblock %}
