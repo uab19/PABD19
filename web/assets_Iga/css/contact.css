@@ -1,0 +1,52 @@
+.input{
+	height: 35px;
+	width:50%;
+	FONT-FAMILY:verdana;
+	font-size: 15;
+	border:0;
+	background-color:#ccffcc;
+	border-radius:13px;
+	text-align:center;
+	
+}
+
+.input:hover{
+	cursor:pointer;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+textarea{
+	FONT-FAMILY:verdana;
+	font-size: 15;
+	width:290px;
+	height:90px;
+	cursor:pointer;
+	background-color:#ccffcc;
+	border:0;
+	border-radius:13px;
+	text-align:center;
+}
+
+textarea:hover{
+	border-color:red;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.button{
+	padding:14px 16px;
+	background-color:#32cd32; 
+	font-family:verdana;
+	border:0;
+	width:300px;
+	font-size:15px;
+	color: white;
+	cursor:pointer;
+}
+.button:hover{
+	background-color: red;
+	box-shadow:0 8px 16px 0 rgba(0,0,0,0.3);
+}
+
+input{
+	cursor:pointer;
+}
+
