@@ -16,4 +16,4 @@ Radu Veronica
 Olariu Lucian
 Marius Rusu
 Goada Radu
-
+Nutiu Gabriel Florin
