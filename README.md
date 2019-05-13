@@ -15,7 +15,7 @@ Preda Alexandru
 Radu Veronica  
 Olariu Lucian  
 Sicoe Mihai Alexandru  
-Marius Rusu
-Ligia Tatucu
-Goada Radu
+Marius Rusu  
+Ligia Tatucu  
+Goada Radu  
 
