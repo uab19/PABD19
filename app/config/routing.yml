@@ -14,8 +14,52 @@ mihai:
         _controller: FrameworkBundle:Template:template
         template: mihai/index.html.twig
 
+
 danet:
     path: /DanetMihai
     defaults:
         _controller: FrameworkBundle:Template:template
         template:  Danet/DanetMihai.html.twig
+
+oancea:
+    path: /oancea
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: oancea/index.html.twig
+
+dogaru:
+    path: /dogaru
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: dogaru/index.html.twig
+
+lucian-olariu:
+    path: /lucian-olariu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: lucian-olariu/index.html.twig
+
+iancu-mihai:
+    path: /iancu-mihai
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: iancu-mihai/index.html.twig
+
+marius-rusu:
+    path: /marius-rusu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: Marius/index.html.twig
+
+ligia-tatucu:
+    path: /ligia-tatucu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: ligia/index.html.twig
+
+radu-goada:
+    path: /radu-goada
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: radu-goada/index.html.twig
+
