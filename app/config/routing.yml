@@ -54,4 +54,8 @@ radu-goada:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: radu-goada/index.html.twig
-
+alexandru-bala:
+    path: /alexandru-bala
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: alexandru-bala/index.html.twig
