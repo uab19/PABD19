@@ -1,0 +1,62 @@
+{% extends 'gallery/layout.html.twig' %}
+
+{% block body %}
+    <div class="container mb-5">
+        <h1 class="my-4">Gallery</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+
+        {% set errors = app.flashes('errors') %}
+        {% if errors|length > 0 %}
+            <div class="alert alert-danger alert-dismissible fade show">
+                {% for error in errors %}
+                   <p>{{ error }}</p>
+                {% endfor %}
+
+                <button type="button" class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                </button>
+            </div>
+        {% endif %}
+
+        <div class="card upload-form-wrapper hidden">
+            <div class="card-body">
+                <h4>
+                    Upload form
+                    <button type="button" class="btn btn-sm btn-primary btn-upload-form--show">show form</button>
+                    <button type="button" class="btn btn-sm btn-secondary btn-upload-form--hide">hide form</button>
+                </h4>
+
+                <div class="upload-form">
+                    {{ form_start(upload_form, {'attr': {'class': 'mt-5'}}) }}
+                    {{ form_widget(upload_form) }}
+                    <button class="btn btn-sm btn-success">Upload</button>
+                    {{ form_end(upload_form) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body pb-0">
+                <div class="row">
+                    {% for image in gallery  %}
+                        <div class="col-sm-6 col-md-3 mx-4 p-0 mb-4 gallery-image-block">
+                            <button class="btn btn-sm btn-danger btn-delete" data-id="{{ image.id }}">&times; delete</button>
+                            <a href="{{ asset(image.file) }}" data-lightbox="gallery" data-title="{{ image.title }}">
+                                <img src="{{ asset(image.file) }}" alt="{{ image.title }}">
+                                <p>{{ image.title }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
