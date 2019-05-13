@@ -4,9 +4,9 @@
 parameters:
     database_host: 127.0.0.1
     database_port: ~
-    database_name: symfony
-    database_user: root
-    database_password: ~
+    database_name: pabd19
+    database_user: pabd19
+    database_password: pabd19pass
     # You should uncomment this if you want to use pdo_sqlite
     #database_path: '%kernel.project_dir%/var/data/data.sqlite'
 
