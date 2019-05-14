@@ -1,0 +1,28 @@
+body{
+    background: #a3f73d;
+}
+
+.pagina-personala{
+    margin: 0 auto;
+    max-width: 80%;
+    display: flex;
+    padding-top: 20px;
+}
+
+.img-profil{
+    height: 200px;
+    margin-top: 20px;
+}
+
+.content{
+    margin-left: 1em;
+    font-family: verdana;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+h1{
+    text-align: center;
+}

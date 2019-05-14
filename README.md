@@ -18,4 +18,4 @@ Marius Rusu
 Ligia Tatucu
 Goada Radu
 Baic Andrei
-
+Dragos Atanasoae  
