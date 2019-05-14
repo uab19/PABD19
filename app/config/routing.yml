@@ -44,6 +44,12 @@ lucian-olariu:
         template: lucian-olariu/index.html.twig
         img: assets_lucian_olariu/images/prof_pic.jpg
 
+alex-preda:
+    path: /alex-preda
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: Alex/index.html.twig
+
 iancu-mihai:
     path: /iancu-mihai
     defaults:
@@ -64,7 +70,7 @@ Iga:
         _controller: FrameworkBundle:Template:template
         template: IgaSanda/index.html.twig
         img: assets_Iga/liceu.jpg
-        
+
 ligia-tatucu:
     path: /ligia-tatucu
     defaults:
@@ -78,3 +84,9 @@ radu-goada:
         _controller: FrameworkBundle:Template:template
         template: radu-goada/index.html.twig\
         img: assets_radu/images/tesla_image.png
+
+dragos:
+    path: /dragos
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:  dragos/index.html.twig

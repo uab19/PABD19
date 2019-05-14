@@ -18,4 +18,4 @@ Sicoe Mihai Alexandru
 Marius Rusu  
 Ligia Tatucu  
 Goada Radu  
-
+Dragos Atanasoae  
