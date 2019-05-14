@@ -80,4 +80,10 @@ dragos:
     defaults:
         _controller: FrameworkBundle:Template:template
         template:  dragos/index.html.twig
+        
+dan-claudiu:
+    path: /dan-claudiu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: dan-claudiu/index.html.twig
 
