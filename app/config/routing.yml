@@ -68,7 +68,6 @@ radu-goada:
         _controller: FrameworkBundle:Template:template
         template: radu-goada/index.html.twig
 
-
 baic-andrei:
     path: /BaicAndrei
     defaults:
@@ -80,4 +79,10 @@ dragos:
     defaults:
         _controller: FrameworkBundle:Template:template
         template:  dragos/index.html.twig
+
+fukep-iulian:
+    path: /fulep-iulian
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: fulep/index.html.twig
 
