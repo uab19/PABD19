@@ -1,0 +1,73 @@
+{% extends 'forum/index.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/forum/home.css') }}">
+{% endblock %}
+
+{% set currentLoggedUser = currentUsername %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-header">Topicele mele</h2>
+
+            {% for flash_message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success"> {{ flash_message }} </div>
+            {% endfor %}
+
+            {% for flash_message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"> {{ flash_message }} </div>
+            {% endfor %}
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titlu</th>
+                        <th class="col-md-8">Continut</th>
+                        <th>Data adaugarii</th>
+                        <th>Subcategorie</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    {% for forumTopic in forumTopics %}
+                    <tr>
+                        <td scope="row">{{ forumTopic.getId }}</td>
+                        <td>{{ forumTopic.getTitle }}</td>
+                        <td>{{ forumTopic.getMessage }}</td>
+                        <td>{{ forumTopic.getDateAdded | date('F j, Y, g:i a')}}</td>
+                        <td>{{ forumTopic.getSubcategoryName }}</td>
+                        <td>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="/forum/topics/topic/view/{{ forumTopic.getId }}" class="btn btn-default"
+                                            data-placement="top" title="Deschide in forum"><span class="glyphicon glyphicon-new-window"></span></a></td>
+                                        </tr>
+                                    <tr>
+                                        <td><a href="/forum/topics/topic/edit/{{ forumTopic.getId }}" class="btn btn-info"
+                                            data-placement="top" title="Editeaza"><span class="glyphicon glyphicon-edit"></a></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <a href="/forum/topics/topic/delete/{{ forumTopic.getId }}" class="btn btn-danger"
+                                                data-placement="top" title="Sterge"><span class="glyphicon glyphicon-remove"></span></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    <tr>
+                    {% endfor %}
+            
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

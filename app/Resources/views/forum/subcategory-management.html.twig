@@ -1,0 +1,31 @@
+{% extends 'forum/index.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/forum/home.css') }}">
+{% endblock %}
+
+{% set currentLoggedUser = currentUsername %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="page-header">{{ pageTitle }}</h2>
+
+            {% for flash_message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success"> {{ flash_message }} </div>
+            {% endfor %}
+
+            {% for flash_message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger"> {{ flash_message }} </div>
+            {% endfor %}
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+@import "colors.css";
+
+.topic tbody tr th {
+    border: 1px solid var(--primary-color);
+}
+
+.topic tbody tr td {
+    border: 1px solid var(--primary-color);
+}
+
+.topic .topic-header th {
+    text-align: center;
+}
+
+.topic .topic-author tr td {
+    border:none;
+}
+
+.topic .topic-message {
+    padding: 1%;
+    text-align: justify;
+}
+
+.topic .topic-info {
+    text-align: right;
+    font-style: italic;
+    background-color:#eceff1 ;
+}
+
+.reply {
+    margin: 0;
+}
+
+.reply tbody tr th {
+    border: 1px solid var(--primary-color);
+}
+
+.reply tbody tr td {
+    border: 1px solid var(--primary-color);
+}
+
+.reply .reply-header th {
+    text-align: center;
+}
+
+.reply .reply-author tr td {
+    border:none;
+}
+
+.reply .reply-message {
+    padding: 1%;
+    text-align: justify;
+}
+
+.reply .reply-info {
+    text-align: right;
+    font-style: italic;
+    background-color:#eceff1 ;
+}
+
+.tag {
+    margin:0;
+}
+
+.tag tbody tr td {
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid var(--primary-color);
+}
+
+.write-reply {
+    margin-bottom: 20px;
+    padding: 3%;
+    border: 1px solid var(--primary-color);
+}
+
+.write-reply .write-reply-header {
+    margin: 1%;
+    font-size:20px;
+}
+
+.write-reply .write-reply-message {
+    margin:1%;
+}
+
+.write-reply .write-reply-footer {
+    margin:1%;
+}
+
+.write-reply .write-reply-footer .btn {
+    margin-top:1%;
+}
+
+.reply-menu {
+    font-style: normal;
+}
+
+.hidden-input {
+    display:none;
+}
+
+.reply-to-reply {
+    display: none;
+}
+
+.modal-header .edit-reply-header {
+    margin: 1%;
+    font-size:20px;
+}
