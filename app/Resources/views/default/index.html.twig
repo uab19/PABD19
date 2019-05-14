@@ -6,46 +6,7 @@
 {% endblock %}
 
 {% block body %}
-
 <section class="hero is-info is-medium is-bold">
-
-    <div class="hero-head">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                </div>
-                <div id="navbarMenu" class="navbar-menu">
-                    <div class="navbar-end">
-                        <div class="tabs is-right">
-                            <ul>
-                                <li class="is-active"><a>Home</a></li>
-                                <li><a href="">Placeholder</a></li>
-                                <li><a href="">Placeholder</a></li>
-                                <li><a href="">Placeholder</a></li>
-                            </ul>
-                            <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="
-                                    {% if app.user %}
-                                        {{ url('logout') }}
-                                    {% else %}
-                                        {{ url('login') }}
-                                    {% endif %}
-                                ">
-                                    <span>
-                                        {% if app.user %}
-                                            Logout
-                                        {% else %}
-                                            Log In
-                                        {% endif %}
-                                    </span>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
 
     <div class="hero-body">
         <div class="container has-text-centered">
@@ -111,8 +72,8 @@
                 {% endfor %}
             </div>
         </div>
-        </div>
-    </section>
+    </div>
+</section>
 
 
         <footer class="footer">

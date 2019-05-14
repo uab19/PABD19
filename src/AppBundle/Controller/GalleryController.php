@@ -14,7 +14,6 @@ class GalleryController extends Controller
 {
     /**
      * @Route("/gallery/", name="app_gallery_index")
-     * @Security("is_granted('ROLE_USER')")
      * @return Response
      */
     public function indexAction()

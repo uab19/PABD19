@@ -1,11 +1,13 @@
-<!doctype html>
-<html lang="ro">
-<head>
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    mihai's page
+{% endblock %}
+{% block stylesheets %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/mihai.css') }}">
-    <title>mihai's page</title>
-</head>
-    <body>
+{% endblock %}
+{% block body %}
         <section class="section">
             <div class="container">
                 <h1 class="title">Owl in a straw hat</h1>
@@ -77,5 +79,4 @@
                 </div>
             </div>
         </section>
-    </body>
-</html>
+{% endblock %}

@@ -17,9 +17,21 @@ class DefaultController extends Controller
 
         $personalStatiRoutes = $this->getStaticRoutesWithImages();
 
-        // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'routes' => $personalStatiRoutes
+        ]);
+    }
+
+    /**
+     * @Route("/pagini-personale", name="pagini-personale")
+     */
+    public function paginPersonaleAction(Request $request)
+    {
+
+        $personalStatiRoutes = $this->getStaticRoutesWithImages();
+
+        return $this->render('index-pagini-personale/index.html.twig', [
             'routes' => $personalStatiRoutes
         ]);
     }
