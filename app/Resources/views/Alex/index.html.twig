@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets_preda_alex/css/alexstyle.css') }}" />
+{% endblock %}
+
+{% block title %}Welcome Preda Alexandru{% endblock %}
+
+{% block body %}
+    <h1>Bine ai venit Alexandru Preda</h1>
+
+    <div class="pagina-personala">
+        <div>
+           <img class="img-profil" src="{{ asset('assets_preda_alex/image/alex.JPG') }}" alt="" /> 
+        </div>
+        <div class="content">
+           
+
+            <p>
+                There was a country in depression / There was a nation in despair / One man finding reasons everywhere.
+                Then there was raising hate and anger / The Man's orders still apply / Who was to be blamed and send to die!
+            </p>
+            <p>
+               When freedom burns / The final solution / Dreams fade away and all hope turns to dust / When millions burn.
+               The curtain has fallen / Lost to the world as they perish in flames.
+            </p>
+          <ul>
+                <li>Fotbal</li>
+                <li>Baschet</li>
+                <li>Volei</li>
+                <li>League of Legends</li>
+                <li>Warframe</li>
+                <li>Premier League</li>
+            </ul>
+        </div>
+          
+        </div>
+
+{% endblock %}
