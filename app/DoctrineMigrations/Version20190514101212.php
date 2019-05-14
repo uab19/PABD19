@@ -10,7 +10,7 @@ use Doctrine\DBAL\Migrations\AbstractMigration;
  */
 final class Version20190514101212 extends AbstractMigration
 {
-    public function up(Schema $schema) : void
+    public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
@@ -21,7 +21,7 @@ final class Version20190514101212 extends AbstractMigration
         $this->addSql('ALTER TABLE blog_post_comment ADD CONSTRAINT FK_F3400AD8A76ED395 FOREIGN KEY (user_id) REFERENCES users (id)');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema)
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
