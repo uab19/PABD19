@@ -38,7 +38,7 @@
                             <div class="post-comment-message">
                                 {{ blogPostComment.getMessage }}
                             </div>
-                            {% if currentUserId == blogPostComment.getUser.getId %}
+                            {% if currentUsername == blogPostComment.getUser.getUsername %}
                                 <div class="post-comment-menu">
                                     <a href="/blog/post/view/{{ blogPost.id }}/comment/delete/{{ blogPostComment.id }}"><span class="glyphicon glyphicon-trash"></span> Stergere</a>
                                 </div>    

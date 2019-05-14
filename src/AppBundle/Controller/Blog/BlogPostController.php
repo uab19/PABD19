@@ -24,7 +24,6 @@ class BlogPostController extends Controller {
         $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
 
         $currentUsername = $this->getUser()->getUsername();
-        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
 
         $blogPost = $this->getDoctrine()->getRepository("AppBundle:BlogPost")->find($postId);
 
@@ -75,11 +74,12 @@ class BlogPostController extends Controller {
             $message = $blogPostCommentForm['message']->getData();
             $createDate = new \DateTime('now');
 
-            $currentUser->$this->getDoctrine()->getRepository("AppBundle:User")->findByEmail($currentUsername);
+            $currentUser = $this->getDoctrine()->getRepository("AppBundle:User")->findByEmail($currentUsername);
 
             foreach($currentUser as $user) {
+
                 $blogPostComment->setMessage($message);
-                $blogPostComment->setUser($this->getDoctrine()->getRepository("AppBundle:User")->findByEmail($user));
+                $blogPostComment->setUser($user);
                 $blogPostComment->setBlogPost($this->getDoctrine()->getRepository("AppBundle:BlogPost")->find($postId));
                 $blogPostComment->setCreateDate($createDate);
     
@@ -93,7 +93,7 @@ class BlogPostController extends Controller {
         };
 
         return $this->render("blog/blog-post-view.html.twig", [
-            'currentUserId' => $currentUserId,
+            'currentUsername' => $currentUsername,
             'blogPost' => $blogPost,
             'blogPostComments' => $blogPostComments,
             'blogPostCommentForm' => $blogPostCommentForm->createView()
@@ -105,8 +105,10 @@ class BlogPostController extends Controller {
      */
     public function blogPostNewAction(Request $request) {
 
-        $session = $request->getSession();
-        $currentUserId = $session->get('currentUserId');
+$this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        $currentUsername = $this->getUser()->getUsername();
+        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
 
         $blogPostForm = $this->createFormBuilder()
                                 ->add('title', TextType::class, 

@@ -20,6 +20,7 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
         return $this->getEntityManager()->createQuery("
             SELECT id FROM AppBundle:User WHERE email = :username 
         ")
-        ->setParameter("username", $username);
+        ->setParameter("username", $username)
+        ->getResult();
     }
 }
