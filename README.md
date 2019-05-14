@@ -20,3 +20,4 @@ Ligia Tatucu
 Goada Radu  
 Dragos Atanasoae  
 Baic Andrei  
+Fulep Iulian
