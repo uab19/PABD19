@@ -1,0 +1,31 @@
+body {
+    background-color: #f9f9f9;
+}
+
+p span {
+    font-weight: lighter;
+    color: #c69500;
+}
+
+h1.title {
+    color: #1b1e21;
+    font-size: 28px;
+    font-weight: lighter;
+}
+
+h1.site-title {
+    color: #1d2124;
+    font-size: 54px;
+}
+
+p.subtitle {
+    color: #1d2124;
+    font-size: 16px;
+    font-weight: lighter;
+}
+
+strong {
+    color: #000000;
+    font-size: 16px;
+    font-weight: lighter;
+}

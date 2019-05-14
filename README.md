@@ -13,11 +13,11 @@ Danet Mihai
 Iancu Mihai-Ovidiu  
 Preda Alexandru  
 Radu Veronica  
-Olariu Lucian
-Marius Rusu
-Ligia Tatucu
-Goada Radu
-Tomuta Dan Claudiu
-Baic Andrei
+Olariu Lucian  
+Sicoe Mihai Alexandru  
+Marius Rusu  
+Ligia Tatucu  
+Goada Radu  
 Dragos Atanasoae  
+Baic Andrei  
 Fulep Iulian

@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class GalleryController extends Controller
 {
     /**
      * @Route("/gallery/", name="app_gallery_index")
-     *
      * @return Response
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class GalleryController extends Controller
 
     /**
      * @Route("/gallery/upload/", name="app_gallery_upload", requirements={"_method"="POST"})
-     *
+     * @Security("is_granted('ROLE_USER')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -78,7 +78,7 @@ class GalleryController extends Controller
 
     /**
      * @Route("/gallery/delete/{id}", name="app_gallery_delete")
-     *
+     * @Security("is_granted('ROLE_USER')")
      * @return Response
      */
     public function deleteAction($id)
@@ -120,5 +120,4 @@ class GalleryController extends Controller
             ->add('file')
             ->getForm();
     }
-
 }

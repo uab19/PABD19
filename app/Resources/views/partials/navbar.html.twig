@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ url('homepage') }}">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Forum</a></li>
+        <li><a href="{{ url('app_gallery_index') }}">Gallery</a></li>
+        <li><a href="{{ url('pagini-personale') }}">Pagini Personale</a></li>
+        <li style="float:right"><a href="
+                {% if app.user %}
+                    {{ url('logout') }}
+                {% else %}
+                    {{ url('login') }}
+                {% endif %}
+            ">
+                {% if app.user %}
+                    Logout
+                {% else %}
+                    Log In
+                {% endif %}
+            </a>
+        </li>
+    </ul>
+</nav>

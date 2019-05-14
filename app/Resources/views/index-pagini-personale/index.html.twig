@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/default.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Pagini Personale Statice</h1>
+                <div class="columns is-multiline">
+                    {% for route in routes %}
+                        <div class="column is-4">
+                            <div class="media">
+                                <div class="media-left">
+                                    <p class="image is-32x32">
+                                        <img src="{{ route.image }}">
+                                    </p>
+                                </div>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <a href="{{route.path}}">{{ route.name }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
