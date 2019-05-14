@@ -17,10 +17,9 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     }
 
     public function findIdByUsername($username) {
-        return $this->getEntityManager()->createQuery("
-            SELECT id FROM AppBundle:User WHERE email = :username 
-        ")
+        return $this->getEntityManager()->createQuery(
+            "SELECT user.id FROM AppBundle:User user WHERE user.email = :username")
         ->setParameter("username", $username)
-        ->getResult();
+        ->getSingleScalarResult();
     }
 }

@@ -34,6 +34,7 @@ class BlogController extends Controller {
         $archiveMonths = $this->getDoctrine()->getRepository("AppBundle:BlogPost")->getArchiveMonthsAndYears();
 
         return $this->render("blog/blog-home.html.twig", [
+            'currentUsername' => $currentUsername,
             'archiveMonths' => $archiveMonths,
             'recentBlogPosts' => $recentBlogPosts,
             'blogPosts' => $blogPosts

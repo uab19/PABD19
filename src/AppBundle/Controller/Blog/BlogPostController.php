@@ -105,7 +105,7 @@ class BlogPostController extends Controller {
      */
     public function blogPostNewAction(Request $request) {
 
-$this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
 
         $currentUsername = $this->getUser()->getUsername();
         $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
@@ -194,6 +194,7 @@ $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
         }
 
         return $this->render("blog/blog-post-new.html.twig", [
+            'currentUsername' => $currentUsername,
             'blogPostForm' => $blogPostForm->createView()
         ]);
     }

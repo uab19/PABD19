@@ -21,13 +21,16 @@ class BlogPostUserController extends Controller {
      */
     public function userPostsAction(Request $request) {
 
-        $session = $request->getSession();
-        $currentUserId = $session->get('currentUserId');
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        $currentUsername = $this->getUser()->getUsername();
+        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
 
         $blogPosts = $this->getDoctrine()->getRepository("AppBundle:BlogPost")->findDescByCreateDate($currentUserId);
 
 
         return $this->render("blog/blog-post-user.html.twig",[
+            'currentUsername' => $currentUsername,
             "blogPosts" => $blogPosts
         ]);
     }
@@ -37,8 +40,10 @@ class BlogPostUserController extends Controller {
      */
     public function edtiPostAction($postId, Request $request) {
 
-        $session = $request->getSession();
-        $currentUserId = $session->get('currentUserId');
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        $currentUsername = $this->getUser()->getUsername();
+        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
      
         $blogPost = $this->getDoctrine()->getRepository("AppBundle:BlogPost")->find($postId);
 
@@ -127,6 +132,7 @@ class BlogPostUserController extends Controller {
         }
 
         return $this->render("blog/blog-post-edit.html.twig", [
+            'currentUsername' => $currentUsername,
             'blogPostForm' => $blogPostForm->createView()
         ]);
     }
