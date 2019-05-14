@@ -7,55 +7,63 @@ igor:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: igor/index.html.twig
+        img: assets_igor/image.jpg
 
 mihai:
     path: /mihai
     defaults:
         _controller: FrameworkBundle:Template:template
         template: mihai/index.html.twig
-
+        img: assets/images/mihai.jpg
 
 danet:
     path: /DanetMihai
     defaults:
         _controller: FrameworkBundle:Template:template
         template:  Danet/DanetMihai.html.twig
+        img: assets/images/DanetMihai.jpg
 
 oancea:
     path: /oancea
     defaults:
         _controller: FrameworkBundle:Template:template
         template: oancea/index.html.twig
+        img: assets/images/oancea.jpg
 
 dogaru:
     path: /dogaru
     defaults:
         _controller: FrameworkBundle:Template:template
         template: dogaru/index.html.twig
+        img: assets/images/dogaru.jpg
 
 lucian-olariu:
     path: /lucian-olariu
     defaults:
         _controller: FrameworkBundle:Template:template
         template: lucian-olariu/index.html.twig
+        img: assets_lucian_olariu/images/prof_pic.jpg
 
 iancu-mihai:
     path: /iancu-mihai
     defaults:
         _controller: FrameworkBundle:Template:template
         template: iancu-mihai/index.html.twig
+        img: assets_mihai_iancu/images/iancu_mihai.jpg
 
 marius-rusu:
     path: /marius-rusu
     defaults:
         _controller: FrameworkBundle:Template:template
         template: Marius/index.html.twig
+        img: assets_marius/images/marius.jpg
 
 ligia-tatucu:
     path: /ligia-tatucu
     defaults:
         _controller: FrameworkBundle:Template:template
         template: ligia/index.html.twig
+        img: assets_ligia/images/giugiunelu.jpg
 
 radu-goada:
     path: /radu-goada
