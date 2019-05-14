@@ -1,0 +1,67 @@
+{% extends 'blog/index.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/blog/blog-post.css') }}">
+    <script src="{{ asset('assets/js/blog/blog.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-12 post-new-main">
+        <div class="post-new">
+            <div class="post-new-header">
+                <h1 class="post-new-title">
+                   Adauga o postare noua
+                </h1>
+            </div>
+            <hr>
+
+            {% for flash_message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success"> {{ flash_message }} </div>
+            {% endfor %}
+
+            <br>
+            <div class="post-new-body">
+                {{ form_start(blogPostForm) }}
+
+                <h2>Titlu</h2>
+
+                {{ form_widget(blogPostForm.title) }}
+
+                <br>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="image-checkbox" value="false">
+                    <label class="form-check-label" for="image-checkbox">Schimba imaginea</label>
+
+                    <div id="image-container">
+                        <h2>Imagine</h2>
+
+                        <div class="post-new-image">
+                            <img src="" alt="" class="img-responsive" id="image-preview">
+                        </div>
+                        
+                        {{ form_widget(blogPostForm.image) }}
+                    </div>
+ 
+                </div>
+
+                <h2>Continut</h2>
+
+                <div class="post-new-content">
+                    {{ form_widget(blogPostForm.content) }}
+                </div>
+
+                <br>
+
+                {{ form_widget(blogPostForm.writepost) }}
+
+                {{ form_end(blogPostForm) }}
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

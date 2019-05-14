@@ -1,0 +1,70 @@
+{% extends 'blog/index.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/blog/blog-post.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-md-12 post-main">
+        <div class="post">
+            <div class="post-header">
+                <h1 class="post-title">
+                    {{ blogPost.getTitle }}
+                </h1>
+                <div class="post-create-date">
+                    Postat la data de {{ blogPost.getCreateDate | date("d M Y H:m") }} de catre {{ blogPost.getUserFullName }}
+                </div>
+            </div>
+            <img src="{{ asset('assets/images/blog/' ~ blogPost.getImage) }}" class="img-responsive post-image">
+            <div class="post-text text-justify">
+                {{ blogPost.getContent }}
+            </div>
+            <div class="post-comments">
+                <h1 class="page-header">
+                    Comentarii ({{ blogPostComments|length }})
+                </h1>
+                <div class="comments">
+                    {% for blogPostComment in blogPostComments %}
+                        <div class="post-comment">
+                            <h2 class="post-comment-author">
+                                {{ blogPostComment.getUserFullName }}
+                            </h2>
+                            <div class="post-comment-create-date">
+                                <span class="glyphicon glyphicon-time"></span> {{ blogPostComment.getCreateDate | date("d M Y H:m") }}
+                            </div>
+                            <div class="post-comment-message">
+                                {{ blogPostComment.getMessage }}
+                            </div>
+                            {% if currentUserId == blogPostComment.getUser.getId %}
+                                <div class="post-comment-menu">
+                                    <a href="/blog/post/view/{{ blogPost.id }}/comment/delete/{{ blogPostComment.id }}"><span class="glyphicon glyphicon-trash"></span> Stergere</a>
+                                </div>    
+                            {% endif %}
+                            <hr>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="post-leave-comment">
+                <div class="post-leave-comment-header">
+                    Lasa un comentariu
+                </div>
+
+                {{ form_start(blogPostCommentForm) }}
+
+                    {{ form_widget(blogPostCommentForm.message) }}
+
+                    <br>
+
+                    {{ form_widget(blogPostCommentForm.writecomment) }}
+
+                {{ form_end(blogPostCommentForm) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

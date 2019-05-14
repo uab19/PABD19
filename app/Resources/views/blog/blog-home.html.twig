@@ -1,0 +1,85 @@
+{% extends 'blog/index.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/blog/blog-home.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="blog-header">
+    <h1 class="blog-title">
+        Blogul programatorilor
+    </h1>
+    <div class="blog-description">Blog de interes pentru programatori</div>
+</div>
+
+<div class="row">
+    <div class="col-sm-8 blog-main">
+
+        {% for blogPost in blogPosts %}
+
+            <div class="blog-post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ asset('assets/images/blog/' ~ blogPost.getImage) }}" class="img-thumbnail">
+                    </div>
+                    <div class="col-sm-8">
+                        <h2 class="blog-post-title">
+                            {{ blogPost.getTitle }}
+                        </h2>
+                        <div class="blog-post-create-date">
+                            <span class="glyphicon glyphicon-time"></span> {{ blogPost.getCreateDate | date("d M Y H:m") }} de {{ blogPost.getUserFullName }}
+                        </div>
+                        <div class="blog-post-content">
+                            {% if blogPost.Content|length > 200 %} 
+                                {{ blogPost.Content | slice(0, 200) }}
+                            {% else %}
+                                {{ blogPost.Content }}
+                            {% endif %}
+                            [...]
+                        </div>
+                        <a href="/blog/post/view/{{ blogPost.id }}">Cisteste mai mult</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="sidebar-module">
+            <h4>Postari recente</h4>
+            <ul class="list-unstyled">
+                {% for recentBlogPost in recentBlogPosts %}
+                    <li><a href="/blog/post/view/{{ recentBlogPost.id }}">{{ recentBlogPost.title }}</a></li>
+                {% endfor %}
+                
+            </ul>
+        </div>
+
+        <div class="sidebar-module">
+            <h4>Arhiva</h4>
+            <ul class="list-unstyled">
+                {% for archiveMonth in archiveMonths %}
+                    <li>
+                        <div class="dropdown">
+                            <a href="#" 
+                                class="dropdown-toggle" 
+                                data-target="#posts-collapse-{{ loop.index }}" 
+                                data-toggle="collapse"
+                                aria-expanded="false">{{ archiveMonth.monthYear }} ({{ archiveMonth.postsNumber }})</a>
+
+                            <ol class="collapse" id="posts-collapse-{{ loop.index }}">
+                                {% for post in archiveMonth.posts %}
+                                    <li><a href="/blog/post/view/{{ post.id }}">{{ post.title }}</a></li>   
+                                {% endfor %}
+                            </ol>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
