@@ -20,3 +20,4 @@ Goada Radu
 Tomuta Dan Claudiu
 Baic Andrei
 Dragos Atanasoae  
+Fulep Iulian
