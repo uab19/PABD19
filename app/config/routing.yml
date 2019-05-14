@@ -54,8 +54,7 @@ radu-goada:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: radu-goada/index.html.twig
-        
-        
+               
 nutiu-gabriel:
     path: /nutiu-gabriel
     defaults:
