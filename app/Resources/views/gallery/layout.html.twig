@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Welcome to GALLERY</title>
+
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/lightbox/css/lightbox.min.css') }}" />
+
+    <style>
+        body {
+            background-color: #E7EFF5;
+        }
+        .upload-form-wrapper.hidden .btn-upload-form--show{
+            display: inline-block;
+        }
+        .upload-form-wrapper .btn-upload-form--show,
+        .upload-form-wrapper.hidden .upload-form,
+        .upload-form-wrapper.hidden .btn-upload-form--hide{
+            display: none;
+        }
+
+        .gallery-image-block {
+            position: relative;
+        }
+        .gallery-image-block .btn-delete {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: none;
+        }
+        .gallery-image-block:hover .btn-delete {
+            display: inline-block;
+            -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+        }
+        .gallery-image-block a {
+            text-decoration: none;
+        }
+        .gallery-image-block a img {
+            width: 100%;
+        }
+        .gallery-image-block a:hover img{
+            border-radius: 4px;
+            overflow: hidden;
+            -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.4);
+        }
+        .gallery-image-block a p {
+            color: #212529;
+            padding: 5px;
+            margin: 0;
+        }
+    </style>
+
+</head>
+<body>
+
+{% block body %}{% endblock %}
+
+<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor/lightbox/js/lightbox.min.js') }}"></script>
+
+<script>
+    $('.upload-form-wrapper .btn-upload-form--show').click(function() {
+        $('.upload-form-wrapper').removeClass('hidden');
+    });
+    $('.upload-form-wrapper .btn-upload-form--hide').click(function() {
+        $('.upload-form-wrapper').addClass('hidden');
+    });
+    $('.gallery-image-block .btn-delete').click(function() {
+        if (confirm('Do you really want to delete this image?')) {
+            var url_template = "{{ url('app_gallery_delete', {'id': 'ID'}) }}";
+            var id = $(this).attr('data-id');
+
+            window.location.href = url_template.replace('ID', id);
+        }
+    });
+</script>
+
+</body>
+</html>
