@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/forum/home.css') }}">
 {% endblock %}
 
+{% set currentLoggedUser = currentUsername %}
+
 {% block body %}
 
 <div class="container">
@@ -48,7 +50,7 @@
 
                     <li class="list-group-item">
                         <ul class="list-group">
-                            {% for subcategory in category.getSubcategories %}
+                            {% for subcategory in category.getSubcategory %}
 
                                 <li class="list-group-item">
                                     {{ subcategory.getName }}

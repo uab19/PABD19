@@ -2,8 +2,8 @@
 
 namespace AppBundle\Controller\Forum;
 
-use AppBundle\Entity\ForumTopics;
-use AppBundle\Entity\ForumSubcategories;
+use AppBundle\Entity\ForumTopic;
+use AppBundle\Entity\ForumSubcategory;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,11 +21,13 @@ class ForumTopicController extends Controller {
      */
     public function newTopicAction(Request $request) {
 
-        $session = $request->getSession();
-        $currentUserId = $session->get('currentUserId');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $forumSubcategories = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategories")->findAll();
-        $forumTopic = new ForumTopics; 
+        $currentUsername = $this->getUser()->getUsername();
+        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
+
+        $forumSubcategories = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategory")->findAll();
+        $forumTopic = new ForumTopic; 
 
         $form = $this->createFormBuilder($forumTopic)
                     ->add('title', TextType::class,
@@ -72,30 +74,33 @@ class ForumTopicController extends Controller {
             $message = $form['message']->getData();
             $subcategory = $form['subcategory']->getData();
 
-            $user = $this->getDoctrine()->getRepository("AppBundle:Users")->find($currentUserId);
+            $userArray = $this->getDoctrine()->getRepository("AppBundle:User")->findByEmail($currentUsername);
 
-            $dateAdded = new\DateTime('now');
+            foreach($userArray as $user) {
+                $dateAdded = new\DateTime('now');
 
-            $forumTopic->setTitle($title);
-            $forumTopic->setMessage($message);
-            $forumTopic->setSubcategory($subcategory);
-            $forumTopic->setUser($user);
-            $forumTopic->setDateAdded($dateAdded);
-
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $entityManager->persist($forumTopic);
-            $entityManager->flush();
-
-            $this->addFlash(
-                'notice',
-                'Topic adaguat cu success!'
-            );
+                $forumTopic->setTitle($title);
+                $forumTopic->setMessage($message);
+                $forumTopic->setSubcategory($subcategory);
+                $forumTopic->setUser($user);
+                $forumTopic->setDateAdded($dateAdded);
+    
+                $entityManager = $this->getDoctrine()->getManager();
+    
+                $entityManager->persist($forumTopic);
+                $entityManager->flush();
+    
+                $this->addFlash(
+                    'notice',
+                    'Topic adaguat cu success!'
+                );
+            }
 
             return $this->redirect($request->getUri());
         } 
 
         return $this->render("forum/topic-new.html.twig",array(
+            'currentUsername' => $currentUsername,
             'form' => $form->createView()
         ));
     }
@@ -103,14 +108,16 @@ class ForumTopicController extends Controller {
     /**
      * @Route("/forum/topics/topic/user/topics", name="forum_topic_user_topics")
      */
-    public function userTopicsAction(Request $request) {
+    public function userTopicsAction() {
 
-        $session = $request->getSession();
-        $currentUserId = $session->get('currentUserId');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $forumTopics = $this->getDoctrine()->getRepository("AppBundle:ForumTopics")->findByUser($currentUserId);
+        $currentUsername = $this->getUser()->getUsername();
+        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
 
-        $forumSubcategories = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategories")->findAll();
+        $forumTopics = $this->getDoctrine()->getRepository("AppBundle:ForumTopic")->findByUser($currentUserId);
+
+        $forumSubcategories = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategory")->findAll();
 
         foreach($forumTopics as $forumTopic) {
 
@@ -130,6 +137,7 @@ class ForumTopicController extends Controller {
         }
 
         return $this->render("forum/topic-user-topics.html.twig", array(
+            'currentUsername' => $currentUsername,
             "forumTopics" => $forumTopics
         ));
     }
@@ -139,8 +147,13 @@ class ForumTopicController extends Controller {
      */
     public function editTopicAction($topic_id, Request $request) {
 
-        $forumTopic = $this->getDoctrine()->getRepository("AppBundle:ForumTopics")->find($topic_id);
-        $forumSubcategories = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategories")->findAll();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $currentUsername = $this->getUser()->getUsername();
+        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
+
+        $forumTopic = $this->getDoctrine()->getRepository("AppBundle:ForumTopic")->find($topic_id);
+        $forumSubcategories = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategory")->findAll();
 
         $form = $this->createFormBuilder($forumTopic)
                 ->add('title', TextType::class,
@@ -188,7 +201,7 @@ class ForumTopicController extends Controller {
             $subcategory = $form['subcategory']->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
-            $forumTopic = $entityManager->getRepository("AppBundle:ForumTopics")->find($topic_id);
+            $forumTopic = $entityManager->getRepository("AppBundle:ForumTopic")->find($topic_id);
 
             $forumTopic->setTitle($title);
             $forumTopic->setMessage($message);
@@ -206,6 +219,7 @@ class ForumTopicController extends Controller {
         
 
         return $this->render("forum/topic-edit.html.twig", array(
+            'currentUsername' => $currentUsername,
             'form' => $form->createView()
         ));
     }
@@ -216,7 +230,7 @@ class ForumTopicController extends Controller {
     public function deleteTopicAction($topic_id, Request $request) {
 
         $entityManager = $this->getDoctrine()->getManager();
-        $forumTopic = $entityManager->getRepository("AppBundle:ForumTopics")->find($topic_id);
+        $forumTopic = $entityManager->getRepository("AppBundle:ForumTopic")->find($topic_id);
 
         if($forumTopic != null) {
             $entityManager->remove($forumTopic);

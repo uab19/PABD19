@@ -6,22 +6,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-use Symfony\Component\HttpFoundation\Session\Session;
+
 
 class ForumController extends Controller {
     
     /**
      * @Route("/forum/home", name="forum_homepage")
      */
-    public function forumHomeAction(Request $request) {
+    public function forumHomeAction() {
 
-        $session = $request->getSession();
-        $session->set('currentUserId', 1);
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
 
-        $categories = $this->getDoctrine()->getRepository("AppBundle:ForumCategories")->findAll();
+        $currentUsername = $this->getUser()->getUsername();
+
+        $categories = $this->getDoctrine()->getRepository("AppBundle:ForumCategory")->findAll();
 
         foreach($categories as $category) {
-            $subcategories = $category->getSubcategories();
+            $subcategories = $category->getSubcategory();
 
             foreach($subcategories as $subcategory) {
 
@@ -29,20 +30,20 @@ class ForumController extends Controller {
                 $entityManager = $this->getDoctrine()->getManager();
 
                 $query = $entityManager->createQuery(
-                    'SELECT COUNT(forumTopics.id)
-                    FROM AppBundle:ForumTopics forumTopics
-                    WHERE forumTopics.subcategory = :subcategory_id'
+                    'SELECT COUNT(forumTopic.id)
+                    FROM AppBundle:ForumTopic forumTopic
+                    WHERE forumTopic.subcategory = :subcategory_id'
                 )->setParameter('subcategory_id', $subcategory_id);
 
                 $topicsNumber = $query->getSingleScalarResult();
 
                 $queryReplies = $entityManager->createQuery(
-                    'SELECT COUNT(forumReplies.id) 
-                    FROM AppBundle:ForumReplies forumReplies
-                    WHERE forumReplies.topic in 
-                        (SELECT forumTopics.id from AppBundle:ForumTopics forumTopics WHERE forumTopics.subcategory = :subcategory_id) or
-                        forumReplies.reply in (select forumReplies2.id from AppBundle:ForumReplies forumReplies2 where forumReplies2.topic in 
-                            (SELECT forumTopics2.id from AppBundle:ForumTopics forumTopics2 WHERE forumTopics2.subcategory = :subcategory_id))'
+                    'SELECT COUNT(forumReply.id) 
+                    FROM AppBundle:ForumReply forumReply
+                    WHERE forumReply.topic in 
+                        (SELECT forumTopic.id from AppBundle:ForumTopic forumTopic WHERE forumTopic.subcategory = :subcategory_id) or
+                        forumReply.reply in (select forumReply2.id from AppBundle:ForumReply forumReply2 where forumReply2.topic in 
+                            (SELECT forumTopic2.id from AppBundle:ForumTopic forumTopic2 WHERE forumTopic2.subcategory = :subcategory_id))'
                 )->setParameter('subcategory_id', $subcategory_id);
 
                 $repliesNumber = $queryReplies->getSingleScalarResult();
@@ -53,6 +54,7 @@ class ForumController extends Controller {
         }
 
         return $this->render("forum/home.html.twig",array(
+            'currentUsername' => $currentUsername,
             'categories' => $categories
         ));
     }
@@ -62,21 +64,25 @@ class ForumController extends Controller {
      */
     public function showTopicsAction($subcategory_id) {
 
-        $topics = $this->getDoctrine()->getRepository("AppBundle:ForumTopics")->findBySubcategory($subcategory_id);
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
 
-        $subcategory = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategories")->find($subcategory_id);
+        $currentUsername = $this->getUser()->getUsername();
+
+        $topics = $this->getDoctrine()->getRepository("AppBundle:ForumTopic")->findBySubcategory($subcategory_id);
+
+        $subcategory = $this->getDoctrine()->getRepository("AppBundle:ForumSubcategory")->find($subcategory_id);
 
         foreach($topics as $topic) {
             $topic_id = $topic->getId();
             $entityManager = $this->getDoctrine()->getManager();
 
             $queryRepliesNumber = $entityManager->createQuery(
-                'SELECT COUNT(forumReplies.id)
-                FROM AppBundle:ForumReplies forumReplies
-                WHERE forumReplies.topic = :topic_id OR 
-                (forumReplies.reply IN (SELECT forumRepliesB.id 
-                FROM AppBundle:ForumReplies forumRepliesB 
-                WHERE forumRepliesB.topic = :topic_id))'
+                'SELECT COUNT(forumReply.id)
+                FROM AppBundle:ForumReply forumReply
+                WHERE forumReply.topic = :topic_id OR 
+                (forumReply.reply IN (SELECT forumReplyB.id 
+                FROM AppBundle:ForumReply forumReplyB 
+                WHERE forumReplyB.topic = :topic_id))'
             )->setParameter('topic_id', $topic_id);
             
             $repliesNumber = $queryRepliesNumber->getSingleScalarResult();
@@ -84,13 +90,14 @@ class ForumController extends Controller {
             $topic->setRepliesNumber($repliesNumber);
 
             $user_id = $topic->getUser();
-            $user = $this->getDoctrine()->getRepository("AppBundle:Users")->find($user_id);
+            $user = $this->getDoctrine()->getRepository("AppBundle:User")->find($user_id);
 
-            $authorName = $user->getLastName()." ".$user->getFirstName();
+            $authorName = $user->getUsername();
             $topic->setAuthorName($authorName);
         }
 
         return $this->render("forum/topics.html.twig", array(
+            'currentUsername' => $currentUsername,
             'topics' => $topics,
             'subcategory' => $subcategory
         ));

@@ -7,6 +7,8 @@
     <script src="{{ asset('assets/js/forum/topic-view.js') }}"></script>
 {% endblock %}
 
+{% set currentLoggedUser = currentUsername %}
+
 {% block body %}
 
 <div class="container-fluid">
@@ -33,7 +35,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <strong> {{ topicAuthor.getLastName }} {{ topicAuthor.getFirstName }} </strong>
+                                                    <strong> {{ topicAuthor.getUsername }} </strong>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -101,7 +103,7 @@
                                         <button class="btn btn-primary btn-reply-to-reply" id="btn-reply-{{ reply.getId }}"
                                             data-placement="top" title="Raspunde"><span class="glyphicon glyphicon-comment"></span></button> 
 
-                                        {% if currentUserId == reply.getUser.getId %}
+                                        {% if currentUsername == reply.getUser.getUsername %}
 
                                             <button class="btn btn-info btn-edit-reply" id="btn-edit-reply-{{ reply.getId }}"
                                                 data-placement="top" title="Editeaza"><span class="glyphicon glyphicon-edit"></span></button>
@@ -182,7 +184,7 @@
                                 <td colspan="2" class="reply-info"> 
                                     Adaugat la data de: {{ reply2.getDateAdded | date('F j, Y, g:i a') }} 
                                     <div class="reply-menu">
-                                        {% if currentUserId == reply2.getUser.getId %}
+                                        {% if currentUsername == reply2.getUser.getUsername %}
 
                                             <button class="btn btn-info btn-edit-reply" id="btn-edit-reply-{{ reply2.getId }}"
                                                     data-placement="top" title="Editeaza"><span class="glyphicon glyphicon-edit"></span></button>

@@ -39,11 +39,12 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-user"></span> Nume Prenume <span class="caret"></span>
+                                <span class="glyphicon glyphicon-user"></span> {{ currentLoggedUser }} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="/forum/management/"><span class="glyphicon glyphicon-cog"></span> Panoul de administrare al forumului</a></li>
-                                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Inapoi la pagina de dashboard</a></li>
+                                <li><a href="/dashboard"><span class="glyphicon glyphicon-log-out"></span> Inapoi la pagina de dashboard</a></li>
+                                <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Deconectare</a></li>
                             </ul>
                         </li>
                     </ul>

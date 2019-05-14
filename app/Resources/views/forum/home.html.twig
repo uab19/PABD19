@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/forum/home.css') }}">
 {% endblock %}
 
+{% set currentLoggedUser = currentUsername %}
+
 {% block body %}
 
 <div class="container">
@@ -23,7 +25,7 @@
             <table class="table table-bordered">
                 <tbody>
             
-                    {% for subcategory in category.getSubcategories %}
+                    {% for subcategory in category.getSubcategory %}
                         <tr>
                             <td class="col-xs-1 col-md-1"><div class="forum-symbol"><span class="glyphicon glyphicon-tower"></span></div></td>
                             <td>

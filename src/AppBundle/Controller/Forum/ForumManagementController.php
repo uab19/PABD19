@@ -2,8 +2,8 @@
 
 namespace AppBundle\Controller\Forum;
 
-use AppBundle\Entity\ForumCategories;
-use AppBundle\Entity\ForumSubcategories;
+use AppBundle\Entity\ForumCategory;
+use AppBundle\Entity\ForumSubcategory;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,9 +21,14 @@ class ForumManagementController extends Controller {
      */
     public function forumManagementAction() {
         
-        $categories = $this->getDoctrine()->getRepository("AppBundle:ForumCategories")->findAll();
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        $currentUsername = $this->getUser()->getUsername();
+
+        $categories = $this->getDoctrine()->getRepository("AppBundle:ForumCategory")->findAll();
 
         return $this->render("forum/forum-management.html.twig",array(
+            'currentUsername' => $currentUsername,
             'categories' => $categories
         ));
     }
@@ -33,9 +38,13 @@ class ForumManagementController extends Controller {
      */
     public function newCategoryAction(Request $request) {
 
-        $forumCategories = new ForumCategories;
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
 
-        $form = $this->createFormBuilder($forumCategories)
+        $currentUsername = $this->getUser()->getUsername();
+
+        $forumCategory = new ForumCategory;
+
+        $form = $this->createFormBuilder($forumCategory)
                 ->add('name', TextType::class,
                     array(
                         'label' => 'Nume',
@@ -62,11 +71,11 @@ class ForumManagementController extends Controller {
 
             $name = $form['name']->getData();
 
-            $forumCategories->setName($name);
+            $forumCategory->setName($name);
 
             $entityManager = $this->getDoctrine()->getManager();
 
-            $entityManager->persist($forumCategories);
+            $entityManager->persist($forumCategory);
             $entityManager->flush();
 
             $this->addFlash(
@@ -79,6 +88,7 @@ class ForumManagementController extends Controller {
         }
 
         return $this->render("forum/category-management.html.twig",array(
+            'currentUsername' => $currentUsername,
             'pageTitle' => 'Adauga categorie noua',
             'form' => $form->createView()
         ));
@@ -89,7 +99,11 @@ class ForumManagementController extends Controller {
      */
     public function editCategoryAction($category_id, Request $request) {
 
-        $forumCategory = $this->getDoctrine()->getRepository('AppBundle:ForumCategories')->find($category_id);
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        $currentUsername = $this->getUser()->getUsername();
+
+        $forumCategory = $this->getDoctrine()->getRepository('AppBundle:ForumCategory')->find($category_id);
 
         $form = $this->createFormBuilder($forumCategory)
                 ->add('name', TextType::class,
@@ -118,7 +132,7 @@ class ForumManagementController extends Controller {
             $name = $form['name']->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
-            $forumCategory = $entityManager->getRepository("AppBundle:ForumCategories")->find($category_id);
+            $forumCategory = $entityManager->getRepository("AppBundle:ForumCategory")->find($category_id);
 
             $forumCategory->setName($name);
 
@@ -133,6 +147,7 @@ class ForumManagementController extends Controller {
         }
 
         return $this->render("forum/category-management.html.twig", array(
+            'currentUsername' => $currentUsername,
             'pageTitle' => 'Editeaza categoria',
             'form' => $form->createView()
         ));
@@ -144,7 +159,7 @@ class ForumManagementController extends Controller {
     public function deleteCategoryAction($category_id, Request $request) {
 
         $entityManager = $this->getDoctrine()->getManager();
-        $forumCategory = $entityManager->getRepository("AppBundle:ForumCategories")->find($category_id);
+        $forumCategory = $entityManager->getRepository("AppBundle:ForumCategory")->find($category_id);
 
         $entityManager->remove($forumCategory);
         $entityManager->flush();
@@ -162,8 +177,12 @@ class ForumManagementController extends Controller {
      */
     public function newSubcategoryAction($category_id, Request $request) {
 
-        $forumCategory = $this->getDoctrine()->getRepository("AppBundle:ForumCategories")->find($category_id);
-        $forumSubcategory = new ForumSubcategories;
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        $currentUsername = $this->getUser()->getUsername();
+
+        $forumCategory = $this->getDoctrine()->getRepository("AppBundle:ForumCategory")->find($category_id);
+        $forumSubcategory = new ForumSubcategory;
 
         $form = $this->createFormBuilder($forumSubcategory)
                 ->add('name', TextType::class,
@@ -221,6 +240,7 @@ class ForumManagementController extends Controller {
         }
 
         return $this->render("forum/subcategory-management.html.twig",array(
+            'currentUsername' => $currentUsername,
             'pageTitle' => $forumCategory->getName().' > Adauga categorie noua',
             'form' => $form->createView()
         ));
@@ -231,7 +251,11 @@ class ForumManagementController extends Controller {
      */
     public function editSubcategoryAction($subcategory_id, Request $request) {
 
-        $forumSubcategory = $this->getDoctrine()->getRepository('AppBundle:ForumSubcategories')->find($subcategory_id);
+        $this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+        $currentUsername = $this->getUser()->getUsername();
+
+        $forumSubcategory = $this->getDoctrine()->getRepository('AppBundle:ForumSubcategory')->find($subcategory_id);
 
         $form = $this->createFormBuilder($forumSubcategory)
                 ->add('name', TextType::class,
@@ -271,7 +295,7 @@ class ForumManagementController extends Controller {
             $description = $form['description']->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
-            $forumSubcategory = $entityManager->getRepository("AppBundle:ForumSubcategories")->find($subcategory_id);
+            $forumSubcategory = $entityManager->getRepository("AppBundle:ForumSubcategory")->find($subcategory_id);
 
             $forumSubcategory->setName($name);
             $forumSubcategory->setDescription($description);
@@ -287,6 +311,7 @@ class ForumManagementController extends Controller {
         }
 
         return $this->render("forum/category-management.html.twig", array(
+            'currentUsername' => $currentUsername,
             'pageTitle' => 'Editeaza categoria',
             'form' => $form->createView()
         ));
@@ -298,7 +323,7 @@ class ForumManagementController extends Controller {
     public function deleteSubcategoryAction($subcategory_id, Request $request) {
 
         $entityManager = $this->getDoctrine()->getManager();
-        $forumSubcategory = $entityManager->getRepository("AppBundle:ForumSubcategories")->find($subcategory_id);
+        $forumSubcategory = $entityManager->getRepository("AppBundle:ForumSubcategory")->find($subcategory_id);
 
         $entityManager->remove($forumSubcategory);
         $entityManager->flush();

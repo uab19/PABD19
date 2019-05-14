@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller\Forum;
 
-use AppBundle\Entity\ForumReplies;
+use AppBundle\Entity\ForumReply;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,21 +19,23 @@ class ForumTopicViewController extends Controller {
      */
     public function viewTopicAction($topic_id, Request $request) {
 
-        $session = $request->getSession();
-        $currentUserId = $session->get('currentUserId');
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        $topic = $this->getDoctrine()->getRepository("AppBundle:ForumTopics")->find($topic_id);
+        $currentUsername = $this->getUser()->getUsername();
+        $currentUserId = $this->getDoctrine()->getRepository("AppBundle:User")->findIdByUsername($currentUsername);
 
-        $topicAuthor = $this->getDoctrine()->getRepository("AppBundle:Users")->find($topic->getUser());
+        $topic = $this->getDoctrine()->getRepository("AppBundle:ForumTopic")->find($topic_id);
 
-        $replies = $this->getDoctrine()->getRepository("AppBundle:ForumReplies")->findByTopic($topic_id);
+        $topicAuthor = $this->getDoctrine()->getRepository("AppBundle:User")->find($topic->getUser());
+
+        $replies = $this->getDoctrine()->getRepository("AppBundle:ForumReply")->findByTopic($topic_id);
 
         foreach($replies as $reply) {
             $userId = $reply->getUser();
 
-            $user = $this->getDoctrine()->getRepository("AppBundle:Users")->find($userId);
+            $user = $this->getDoctrine()->getRepository("AppBundle:User")->find($userId);
 
-            $reply->setAuthorName($user->getLastName()." ".$user->getFirstName());
+            $reply->setAuthorName($user->getUsername());
 
             $replies2 = $reply->getReplies();
 
@@ -41,9 +43,9 @@ class ForumTopicViewController extends Controller {
 
                 $userId2 = $reply2->getUser();
 
-                $user2 = $this->getDoctrine()->getRepository("AppBundle:Users")->find($userId2);
+                $user2 = $this->getDoctrine()->getRepository("AppBundle:User")->find($userId2);
 
-                $reply2->setAuthorName($user2->getLastName()." ".$user2->getFirstName());
+                $reply2->setAuthorName($user2->getUsername());
             }
         }
 
@@ -53,32 +55,36 @@ class ForumTopicViewController extends Controller {
 
         if($writeReplyForm->isSubmitted() && $writeReplyForm->isValid()) {
 
-            $forumReplies = new ForumReplies;
+            $forumReply = new ForumReply;
 
             $message = $writeReplyForm['message']->getData();
             $dateAdded = new\DateTime('now');
 
-            $forumReplies->setMessage($message);
-            $forumReplies->setDateAdded($dateAdded);
+            $forumReply->setMessage($message);
+            $forumReply->setDateAdded($dateAdded);
             
             $replyId = $writeReplyForm['reply_id']->getData();
             if($replyId != null) {
-                $forumReply = $this->getDoctrine()->getRepository("AppBundle:ForumReplies")->find($replyId);
 
-                $forumReplies->setReply($forumReply);
+                $forumReply = $this->getDoctrine()->getRepository("AppBundle:ForumReply")->find($replyId);
+
+                $forumReply->setReply($forumReply);
             } else {
-                $forumReplies->setTopic($topic);
+
+                $forumReply->setTopic($topic);
             }
 
-            $currentUser = $this->getDoctrine()->getRepository("AppBundle:Users")->find($currentUserId);
+            $userArray = $this->getDoctrine()->getRepository("AppBundle:User")->findByEmail($currentUsername);
 
-            $forumReplies->setUser($currentUser);
-
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $entityManager->persist($forumReplies);
-            $entityManager->flush();
-
+            foreach($userArray as $user) {
+                $forumReply->setUser($user);
+    
+                $entityManager = $this->getDoctrine()->getManager();
+    
+                $entityManager->persist($forumReply);
+                $entityManager->flush();
+            }
+            
             return $this->redirect($request->getUri());
         }
 
@@ -92,9 +98,9 @@ class ForumTopicViewController extends Controller {
             $editReplyId = $editReplyForm['edit_reply_id']->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
-            $editForumReply = $entityManager->getRepository('AppBundle:ForumReplies')->find($editReplyId);
+            $editForumReply = $entityManager->getRepository('AppBundle:ForumReply')->find($editReplyId);
 
-            $editForumReply->setMessage("EDITAT: ".$editMessage);
+            $editForumReply->setMessage($editMessage);
 
             $entityManager->flush();
 
@@ -102,11 +108,11 @@ class ForumTopicViewController extends Controller {
         }
 
         return $this->render("forum/topic-view.html.twig",array(
+            'currentUsername' => $currentUsername,
             'topic' => $topic,
             'topicAuthor' => $topicAuthor,
             'replies' => $replies,
             'writeReplyForm' => $writeReplyForm->createView(),
-            'currentUserId' => $currentUserId,
             'editReplyForm' => $editReplyForm->createView()
         ));
     }
@@ -190,10 +196,10 @@ class ForumTopicViewController extends Controller {
     public function deleteReplyAction($topic_id, $reply_id) {
 
         $entityManager = $this->getDoctrine()->getManager();
-        $forumReplies = $entityManager->getRepository("AppBundle:ForumReplies")->find($reply_id);
+        $forumReply = $entityManager->getRepository("AppBundle:ForumReply")->find($reply_id);
 
-        if($forumReplies != null) {
-            $entityManager->remove($forumReplies);
+        if($forumReply != null) {
+            $entityManager->remove($forumReply);
             $entityManager->flush();
         } 
 
