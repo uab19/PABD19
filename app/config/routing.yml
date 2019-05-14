@@ -31,9 +31,38 @@ lucian-olariu:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: lucian-olariu/index.html.twig
-        
+
 alex-preda:
     path: /alex-preda
     defaults:
         _controller: FrameworkBundle:Template:template
         template: Alex/index.html.twig
+
+iancu-mihai:
+    path: /iancu-mihai
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: iancu-mihai/index.html.twig
+marius-rusu:
+    path: /marius-rusu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: Marius/index.html.twig
+
+Iga:
+    path: /Iga
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: IgaSanda/index.html.twig
+        
+ligia-tatucu:
+    path: /ligia-tatucu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: ligia/index.html.twig
+
+radu-goada:
+    path: /radu-goada
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: radu-goada/index.html.twig

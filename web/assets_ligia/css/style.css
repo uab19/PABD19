@@ -1,0 +1,7 @@
+
+    img {    width: 100%;  }
+    .center{ position: absolute; left: 50%;  top: 50%; transform: translate(-50%, -50%);}
+    body { background-color: rgb(155, 91, 31) !important; }
+    p { font-size:15px; font-weight:bold;padding-bottom:30px;}
+    li{font-size:15px; font-weight:bold;}
+    h1{padding-bottom:30px;}
