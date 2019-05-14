@@ -55,6 +55,7 @@ Iga:
         _controller: FrameworkBundle:Template:template
         template: IgaSanda/index.html.twig
         
+
 ligia-tatucu:
     path: /ligia-tatucu
     defaults:
@@ -66,8 +67,23 @@ radu-goada:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: radu-goada/index.html.twig
+
+
+baic-andrei:
+    path: /BaicAndrei
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: baic/index.html.twig
+
 dragos:
     path: /dragos
     defaults:
         _controller: FrameworkBundle:Template:template
         template:  dragos/index.html.twig
+        
+dan-claudiu:
+    path: /dan-claudiu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: dan-claudiu/index.html.twig
+
