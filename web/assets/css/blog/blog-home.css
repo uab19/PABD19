@@ -1,0 +1,46 @@
+.blog-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.blog-title {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 60px;
+    font-weight: normal;
+}
+
+.blog-description {
+    font-size: 20px;
+    color: #999999;
+    font-style: italic;
+}
+
+.blog-main {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.blog-post {
+    margin-bottom: 60px;
+    background: #ffffff;
+    padding:20px;
+    border:1px solid #e7e7e7;
+  }
+
+.blog-post-title {
+    margin-bottom: 5px;
+    font-size: 40px;
+    word-wrap: break-word;
+}
+
+.blog-post-create-date {
+    margin-bottom: 20px;
+    color: #999999;
+}
+
+.blog-post-content {
+    color: #999999;
+    word-wrap: break-word;
+    text-align: justify;
+}
