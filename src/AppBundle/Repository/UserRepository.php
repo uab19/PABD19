@@ -15,6 +15,8 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
             ->getQuery()
             ->getOneOrNullResult();
     }
+<<<<<<< HEAD
+=======
 
     public function findIdByUsername($username) {
         return $this->getEntityManager()->createQuery(
@@ -22,4 +24,5 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
         ->setParameter("username", $username)
         ->getSingleScalarResult();
     }
+>>>>>>> f1b7ad2891efc056121326942245f1a482c8117e
 }

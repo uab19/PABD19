@@ -1,0 +1,27 @@
+body{
+    background: #a3f73d;
+}
+
+.personal_page_container{
+    margin: 0 auto;
+    max-width: 80%;
+    display: flex;
+    padding-top: 50px;
+}
+
+.profile_pic{
+    height: 150px;
+}
+
+.content{
+    margin-left: 1em;
+    font-family: verdana;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+h1{
+    text-align: center;
+}
