@@ -1,0 +1,61 @@
+{% extends 'blog/index.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/blog/blog-home.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/blog/blog-post-user.css') }}">
+{% endblock %}
+
+{% set who = currentUsername %}
+
+{% block body %}
+
+<div class="blog-header">
+    <h1 class="blog-title">
+        Nume Prenume
+    </h1>
+    <div class="blog-description">Postarile mele</div>
+</div>
+
+{% for flash_message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success"> {{ flash_message }} </div>
+{% endfor %}
+
+<div class="row">
+    <div class="col-sm-12 blog-post-user-main">
+
+        {% for blogPost in blogPosts %}
+
+            <div class="blog-post-user">
+                <div class="row">
+                    <div class="col-md-12 blog-post-user-header">
+                        <h2 class="blog-post-title">
+                                {{ blogPost.title }}
+                        </h2>
+                        <div class="blog-post-create-date">
+                            <span class="glyphicon glyphicon-time"></span> {{ blogPost.create_date | date("d M Y H:m") }}
+                        </div>
+                    </div>
+                    <div class="col-md-12 blog-post-user-image">
+                        <img src="{{ asset('assets/images/blog/' ~ blogPost.image) }}" class="img-responsive">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="blog-post-content">
+                            {{ blogPost.content | slice(0, (blogPost.content|length)/2) }}
+                            [...]
+                        </div>
+                    </div>
+                    <div class="col-md-12 blog-post-user-readmore">
+                        <a href="/blog/post/view/{{ blogPost.id }}">Citeste mai mult</a>
+                    </div>
+                    <div class="col-md-12 blog-post-user-menu">
+                        <a href="/blog/post/edit/{{ blogPost.id }}"><span class="glyphicon glyphicon-edit"></span> Editare</a>
+                        <a href="/blog/post/delete/{{ blogPost.id }}"><span class="glyphicon glyphicon-trash"></span> Stergere</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

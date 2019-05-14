@@ -2,15 +2,16 @@ body{
     background: #a3f73d;
 }
 
-.personal_page_container{
+.pagina-personala{
     margin: 0 auto;
     max-width: 80%;
     display: flex;
-    padding-top: 50px;
+    padding-top: 20px;
 }
 
-.profile_pic{
-    height: 150px;
+.img-profil{
+    height: 200px;
+    margin-top: 20px;
 }
 
 .content{
