@@ -43,6 +43,12 @@ marius-rusu:
         _controller: FrameworkBundle:Template:template
         template: Marius/index.html.twig
 
+Iga:
+    path: /Iga
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: IgaSanda/index.html.twig
+        
 ligia-tatucu:
     path: /ligia-tatucu
     defaults:
