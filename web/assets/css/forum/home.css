@@ -1,0 +1,70 @@
+@import "colors.css";
+
+.navigation-bar {
+    background-color: var(--primary-color);
+}
+
+.navigation-bar .navbar-brand {
+    color: var(--writing-primary-color);
+    cursor: default;
+}
+
+.navigation-bar .navbar-brand:hover {
+    color: var(--writing-primary-color);
+    cursor: default;
+}
+
+.navigation-bar .forum-menu li a {
+    color: var(--writing-primary-color);
+}
+
+.navigation-bar .forum-menu li a:hover {
+    color: var(--writing-primary-color);
+    background-color: var(--secondary-color);
+}
+
+
+.navigation-bar .dropdown .dropdown-toggle {
+    color: var(--writing-primary-color);
+}
+
+.navigation-bar .dropdown .dropdown-toggle:hover {
+    color: var(--writing-primary-color);
+}
+
+.forum-symbol {
+    color: var(--primary-color);
+    text-align: center;
+    font-size:20px;
+}
+
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    color: var(--writing-primary-color);
+    background-color: var(--secondary-color);
+}
+
+.category {
+    font-size:20px;
+    background-color: var(--primary-color);
+    color: var(--writing-primary-color);
+    padding: 5px;
+}
+
+.subcategory a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.subcategory a:hover {
+    color:var(--secondary-color);
+}
+
+.title {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+textarea {
+    resize: vertical;
+}
