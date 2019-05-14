@@ -3,7 +3,7 @@ PABD19
 
 A Symfony project created on February 26, 2019, 4:53 pm.
 
-Contributors:
+Contributors
 
 Iga Sanda  
 Dogaru Narcis  
@@ -19,3 +19,4 @@ Marius Rusu
 Ligia Tatucu  
 Goada Radu  
 Dragos Atanasoae  
+Baic Andrei  
