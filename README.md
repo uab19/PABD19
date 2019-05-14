@@ -17,5 +17,5 @@ Olariu Lucian
 Marius Rusu
 Ligia Tatucu
 Goada Radu
-Dragos Atanasoae
-
+Baic Andrei
+Dragos Atanasoae  
