@@ -60,3 +60,12 @@ radu-goada:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: radu-goada/index.html.twig
+        
+        
+dan-claudiu:
+    path: /Dan-Claudiu
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: Dan-Claudiu/index.html.twig
+        
+                
