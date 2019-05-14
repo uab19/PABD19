@@ -1,0 +1,19 @@
+body{
+    background: yellow;
+}
+
+.pagina{
+    margin: 0 auto;
+    max-width: 80%;
+    display: flex;
+    padding-top: 50px;
+}
+
+.profil{
+    height: 400px;
+}
+
+.content{
+    margin-left: 1em;
+    font-family: verdana;
+}
