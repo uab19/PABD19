@@ -1,0 +1,37 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Arial', 'sans-serif';
+    background-color: #dceffff;
+}
+
+.main {
+    width: 80vw;
+    margin: 15px auto;
+    background-color: #ffff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+p, h1, ul {
+    margin-bottom: 15px;
+}
+
+ul{
+    padding-left: 25px;
+}
+
+img {
+    margin: 15px;
+}
+
+.pull-left {
+    float: left;
+}
+
+img.pull-left {
+    margin-left: 0px;
+}
