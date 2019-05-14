@@ -11,8 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class DefaultController extends Controller
 {
-<<<<<<< HEAD
-=======
      /**
      * @Route("/contact", name="form_contact")
      */
@@ -48,7 +46,6 @@ class DefaultController extends Controller
              'my_form' => $form->createView(),
          ]);
     }
->>>>>>> f1b7ad2891efc056121326942245f1a482c8117e
     
     /**
      * @Route("/", name="pagina_personala")
@@ -57,15 +54,6 @@ class DefaultController extends Controller
     {
       
         // replace this example code with whatever you need
-<<<<<<< HEAD
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
-    }
-    
-}
-
-=======
         return $this->render('IgaSanda/index.html.twig');
     }
     
@@ -77,4 +65,3 @@ class DefaultController extends Controller
         die('Salutare! Sunt Iga Sanda');
     }
 }
->>>>>>> f1b7ad2891efc056121326942245f1a482c8117e
