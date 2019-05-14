@@ -64,11 +64,12 @@ class ForumTopicViewController extends Controller {
             $forumReply->setDateAdded($dateAdded);
             
             $replyId = $writeReplyForm['reply_id']->getData();
+
             if($replyId != null) {
 
-                $forumReply = $this->getDoctrine()->getRepository("AppBundle:ForumReply")->find($replyId);
+                $reply = $this->getDoctrine()->getRepository("AppBundle:ForumReply")->find($replyId);
 
-                $forumReply->setReply($forumReply);
+                $forumReply->setReply($reply);
             } else {
 
                 $forumReply->setTopic($topic);
