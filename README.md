@@ -15,5 +15,6 @@ Preda Alexandru
 Radu Veronica  
 Olariu Lucian
 Marius Rusu
-Goada Radu
+Goada Radu 
+Tomuta Dan Claudiu
 
