@@ -1,0 +1,19 @@
+body{
+    background: #FF0000;
+}
+
+.pag_pers{
+    margin: 0 auto;
+    max-width: 80%;
+    display: flex;
+    padding-top: 50px;
+}
+
+.profil{
+    height: 250px;
+}
+
+.paragraphs{
+    margin-left: 1em;
+    font-family: sans-serif;
+}
