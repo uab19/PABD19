@@ -1,0 +1,41 @@
+body {
+    background-color: lightgray;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 80%;
+    display: flex;
+    padding-top: 50px;
+}
+
+.profile-image {
+    width: 300px;
+    height: 450px;
+    margin-top: 20px;
+}
+
+.subtitle {
+    margin-top: -20px;
+    font-size: 18px;
+    color: gray;
+}
+
+.bio {
+    font-size: 16px
+}
+
+.description-container{
+    margin-left: 30px;
+}
+
+.skills-container {
+    display: flex;
+    margin-left: -20px;
+}
+
+.skill-title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 22px;
+}
