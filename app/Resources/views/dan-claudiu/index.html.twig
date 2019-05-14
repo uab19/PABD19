@@ -1,4 +1,12 @@
- <link rel="stylesheet" href="{{ asset('assets/css/danclaudiustyle.css') }}" />
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/danclaudiustyle.css') }}" />
+{% endblock %}
+
+{% block title %}Welcome Tomuta Dan{% endblock %}
+
+{% block body %}
 
 <div class="pagina">
         <div class="profile_pic_container">
@@ -19,3 +27,5 @@ Ultimul proiect finalizat de regizorul Cristian Nemescu, filmul îi are în rolu
     <li>Film</li>
     <li>Proiect</li>
 </ul>
+            
+{% endblock %}
