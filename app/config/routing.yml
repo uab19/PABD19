@@ -111,3 +111,9 @@ fukep-iulian:
         _controller: FrameworkBundle:Template:template
         template: fulep/index.html.twig
 
+alim-kabaca:
+    path: /alim-kabaca
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: alim/index.html.twig
+        img: assets_alimk/images/IMG_6065.JPG
