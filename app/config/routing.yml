@@ -117,3 +117,9 @@ alim-kabaca:
         _controller: FrameworkBundle:Template:template
         template: alim/index.html.twig
         img: assets_alimk/images/IMG_6065.JPG
+jude-raul:
+    path: /jude-raul
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: jude/index.html.twig
+        img: assets_jude/images/jude.jpg

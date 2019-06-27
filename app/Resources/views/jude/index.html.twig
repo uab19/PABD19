@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets_jude/css/style.css') }}" />
+{% endblock %}
+
+{% block title %}Jude-Raul{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="profile-image-container">
+           <img class="profile-image" src="{{ asset('assets_jude/images/jude.jpg') }}" alt="Jude Raul" /> 
+        </div>
+        <div class="description-container">
+            <h2>Jude-Raul</h2>
+            <p class="subtitle">Web developer</p>
+            <p class="bio">
+                Sup, I’m Jude and I’m 29 years old. Huge passion for gaming and snowboarding, love to travel and to enjoy life. 
+				Currently working at Electrica Furnizare S.A, so be careful to pay your bills :). That beeing said I wish you a nice day.
+            </p>
+            <p>
+                
+            </p>
+            <div class="skills-container">
+                <ul>
+                    <p class="skill-title">Personal skills</p>
+                    <li>Communication</li>
+                    <li>Teamwork</li>
+                    <li>Approachability and Helpfulness</li>
+                    <li>Patience</li>
+                    <li>Open-mindedness</li>
+                    <li>Problem solving</li>
+                </ul>
+                <ul>
+                    <p class="skill-title">Programming languages</p>
+                    <li>C#</li>
+                    <li>PHP</li>
+                    <li>Java</li>
+                    <li>Javasript</li>
+                </ul>
+                <ul>
+                    <p class="skill-title">Key skills and competencies</p>
+                    <li>.Net</li>
+                    <li>Laravel</li>
+                    <li>ReactJS</li>
+                    <li>SQL Server</li>
+                    <li>MySql</li>
+                    <li>HTML</li>
+                    <li>Css</li>
+                </ul>
+            </div>
+        </div>
+          
+        </div>
+
+{% endblock %}
