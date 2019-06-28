@@ -21,3 +21,6 @@ Goada Radu
 Dragos Atanasoae  
 Baic Andrei  
 Fulep Iulian
+
+Alim Kabaca
+Jude Raul
